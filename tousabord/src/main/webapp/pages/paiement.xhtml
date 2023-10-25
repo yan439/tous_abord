@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+    <meta charset="UTF-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <link rel="stylesheet" href="../resources/css/paiement.css"></link>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></link>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"></link>
+
+</h:head> 
+<h:body>
+<div class="container py-5">
+        <!-- For demo purpose -->
+        <div class="row mb-4">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-6">Paiement</h1>
+            </div>
+        </div> <!-- End -->
+        <div class="row">
+            <div class="col-lg-6 mx-auto">
+                <div class="card ">
+                    <div class="card-header">
+                        <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
+                            <!-- Credit card form tabs -->
+                            <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
+                                <li class="nav-item"> <a data-toggle="pill" href="#credit-card" class="nav-link active "> <i class="fas fa-credit-card mr-2"></i>Carte bancaire </a> </li>
+                                <li class="nav-item"> <a data-toggle="pill" href="#paypal" class="nav-link "> <i class="fab fa-paypal mr-2"></i> PayPal </a> </li>
+                                <li class="nav-item"> <a data-toggle="pill" href="#net-banking" class="nav-link "> <i class="fas fa-mobile-alt mr-2"></i> Banque en ligne </a> </li>
+                            </ul>
+                        </div> <!-- End -->
+                        <!-- Credit card form content -->
+                        <div class="tab-content">
+                            <!-- credit card info-->
+                            <div id="credit-card" class="tab-pane fade show active pt-3">
+                                <form role="form" onsubmit="event.preventDefault()">
+                                    <div class="form-group"> <label for="username">
+                                            <h6>Nom du titulaire de la carte&nbsp;&nbsp;
+                                            
+                                            </h6>
+                                        </label> <input type="text" name="username" value="#{paiementController.reservation.utilisateur.infoPersonnelle.prenom} #{paiementController.reservation.utilisateur.infoPersonnelle.nom.toUpperCase()}" required="true" /> </div>
+                                    <div class="form-group"> <label for="cardNumber">
+                                            <h6 style="padding-right:3px;">Numéro de la carte </h6>
+                                        </label>
+                                        <div class="input-group"> <input type="text" name="cardNumber" class="form-control " required="true"/>
+                                            <div class="input-group-append"> <span class="input-group-text text-muted"> <i class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i> <i class="fab fa-cc-amex mx-1"></i> </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <div class="form-group"> <label><span class="hidden-xs">
+                                                        <h6>Date d'expiration</h6>
+                                                    </span></label>
+                                                <div class="input-group"> <input type="number" placeholder="MM" name="" class="form-control" required="true"/> <input type="number" placeholder="AA" name="" class="form-control" required="true"/> </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group mb-4"> <label data-toggle="tooltip" title="Les trois derniers chiffres derrière votre carte ">
+                                                    <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
+                                                </label> <input type="text" required="true" class="form-control"/> </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer"> 
+                                    <button type="button" class="subscribe btn btn-primary btn-block shadow-sm" action="#{paiementController.confirmerPaiement(paiementController.reservation.id)}"
+                                    		 onclick="alert('Votre paiement a été accepté.');">Confirmer le paiement</button>
+                                </div>
+                                </form>
+                                
+                            </div>
+                        </div> <!-- End -->
+                        <!-- Paypal info -->
+                        <div id="paypal" class="tab-pane fade pt-3">
+                            <h6 class="pb-2 ">selectionner un compte PayPal</h6>
+                            <div class="form-group "> <label class="radio-inline"> <input type="radio" name="optradio" checked="true"></input> Domestic </label> <label class="radio-inline"> <input type="radio" name="optradio" class="ml-5"></input>International </label></div>
+                            <p> <button type="button" class="btn btn-primary "><i class="fab fa-paypal mr-2"></i> Log into my Paypal</button> </p>
+                            <p class="text-muted"> Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
+                        </div> <!-- End -->
+                        <!-- bank transfer info -->
+                        <div id="net-banking" class="tab-pane fade pt-3">
+                            <div class="form-group "> <label for="Select Your Bank">
+                                    <h6>Selectionner votre banque</h6>
+                                </label> <select class="form-control" id="ccmonth">
+                                    <option value="" selected="selected" disabled="disabled">--Veuillez selectionner votre banque--</option>
+                                    <option>Bank 1</option>
+                                    <option>Bank 2</option>
+                                </select> </div>
+                            <div class="form-group">
+                                <p> <button type="button" class="btn btn-primary "><i class="fas fa-mobile-alt mr-2"></i>Confirmer paiement </button> </p>
+                            </div>
+                             <p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
+                        </div> <!-- End -->
+                        <!-- End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div>
+      
+	
+
+</h:body> 
+</html>

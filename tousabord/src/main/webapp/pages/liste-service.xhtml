@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+	<f:metadata>
+	<f:event listener="#{livraisonController.init()}" type="preRenderView"></f:event>
+</f:metadata>
+</f:metadata>
+
+<h:body>
+
+<!-- 	<ui:composition template="/WEB-INF/template/layout.xhtml"> -->
+
+		<ui:define name="css">
+			<link rel="stylesheet" href="css/orgaListe.css" />
+		</ui:define>
+		<ui:define name="content">
+
+			
+		
+
+			<div class="container shadow p-5 mb-5">
+				<div class="row">
+					<p:repeat var="livraison"
+						value="#{livraisonController.livraisons}">
+						<div class="col-12 col-md-3 my-3">
+							<h:link
+								outcome="pageOng.xhtml?id=#{livraison.id}faces-redirect=true">
+								<p:card style="margin-right: 30px; height: 100%"
+									styleClass="shadow">
+									<f:facet name="header">
+										<img src="#{request.contextPath}#{utilisateurController.utilisateur.infoPersonnelle.imagePath}" class="ratio"
+											style="object-fit: cover; height: 20% !important" />
+									</f:facet>
+									<f:facet name="title">
+											#{utilisateurController.utilisateur.infoPersonnelle.nom}
+										</f:facet>
+									<f:facet name="footer">
+									#{livraisonController.colis.description}
+									<div class="d-flex justify-content-between align-items-bottom pb-2">
+
+											<p></p>
+											<p></p>
+										</div>	
+									</f:facet>
+								</p:card>
+							</h:link>
+						</div>
+					</p:repeat>
+				</div>
+			</div>
+		</ui:define>
+<!-- 	</ui:composition> -->
+</h:body>
+</html>

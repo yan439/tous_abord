@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui">
+<f:metadata>
+	<f:event listener="#{utilisateurProfilController.onLoad()}"
+		type="preRenderView"></f:event>
+</f:metadata>
+<h:head>
+	<h:outputStylesheet library="css" name="styleromuald.css" />
+</h:head>
+<body>
+	<h4>Profil utilisateur</h4>
+	<div class="container mt-3">
+		<div class="card" style="width: 400px">
+			<img class="card-img-top"
+				src="#{request.contextPath}#{utilisateurController.utilisateur.infoPersonnelle.imagePath}"
+				style="width: 50%" />
+			<div class="card-body">
+				<div>
+					<img class="img-fluid w-100" id="containerBorder"
+						src="#{request.contextPath}#{utilisateurProfilController.utilisateur.infoPersonnelle.imagePath}"
+						alt="" />
+				</div>
+				<h4 class="card-title">Nom Prenom :
+					#{utilisateurProfilController.utilisateur.infoPersonnelle.nom}
+					#{utilisateurProfilController.utilisateur.infoPersonnelle.prenom}</h4>
+				<!-- 					<h4 class="card-title">"#{utilisateurProfilController.utilisateur.typeUtilisateur.valueOf()}</h4> -->
+				<p class="card-text">Concepteur Développeur Java JEE</p>
+			</div>
+			<div class="col-12 col-md-1 my-auto ps-5 pe-0">
+				<p:linkButton icon="pi pi-cog"
+					styleClass="rounded-button ui-button-secondary ui-button-flat"
+					title="Modifier mes informations" outcome="modifier-utilisateur" />
+			</div>
+		</div>
+	</div>
+	<br />
+	<div>
+		<img class="img-fluid w-100" id="containerBorder"
+			src="#{request.contextPath}#{utilisateurProfilController.utilisateur.infoPersonnelle.imagePath}"
+			alt="" />
+	</div>
+	<hr />
+	<h4 align="left">Proposer un service</h4>
+	<h:link value="créer nouvelle livraison"
+		outcome="/pages/livraison/creer-livraison.xhtml" />
+	<hr />
+	<h:form>
+		<b:tabView pills="true"
+			contentStyle="border: 1px solid #ddd;padding:10px">
+			<b:tab title="Mes propositions">
+				<h3>liste de mes propositions</h3>
+				<h:dataTable value="#{utilisateurProfilController.services}"
+					border="1" cellpadding="5" cellspacing="5" var="liv"
+					styleClass="livTable" headerClass="livTableHeader"
+					rowClasses="livTableOddRow, livTableEvenRow">
+					<h:column>
+						<f:facet name="header">Lieu de départ</f:facet>
+						<h:outputText
+							value="#{liv.infoDebutService.lieuDeDepart.numero}  #{liv.infoDebutService.lieuDeDepart.voie},  #{liv.infoDebutService.lieuDeDepart.ville} #{liv.infoDebutService.lieuDeDepart.codePostal}">
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Lieu d'arrivée</f:facet>
+						<h:outputText
+							value="#{liv.infoFinService.lieuDArrivee.numero}  #{liv.infoFinService.lieuDArrivee.voie},  #{liv.infoFinService.lieuDArrivee.ville} #{liv.infoFinService.lieuDArrivee.codePostal}">
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Date de départ</f:facet>
+						<h:outputText value="#{liv.infoDebutService.dateDeDepart}">
+							<f:convertDateTime locale="fr" type="date" dateStyle="full"
+								pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Heure de départ</f:facet>
+						<h:outputText value="#{liv.infoDebutService.heureDeDepart}">
+							<f:convertDateTime locale="fr" type="time" pattern="h:mm" />
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Date d'arrivée</f:facet>
+						<h:outputText value="#{liv.infoFinService.dateDArrivee}">
+							<f:convertDateTime locale="fr" type="date" dateStyle="full"
+								pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Heure de départ</f:facet>
+						<h:outputText value="#{liv.infoFinService.heureDArrivee}">
+							<f:convertDateTime locale="fr" type="time" pattern="h:mm" />
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Etat du service</f:facet>
+						<h:outputText value="#{liv.etatService}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Montant</f:facet>
+						<h:outputText value="#{liv.montant}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Action </f:facet>
+						<h:commandLink
+							action="#{livraisonController.supprimerLivraison(liv.id)}"
+							onclick="return confirm('Confirmez-vous la suppression ?')"
+							value="Supprimer" />
+				
+		                | <h:commandLink
+							action="#{livraisonController.showModifierLivraison()}"
+							value="modifier">
+							<f:param name="livraisonId" value="#{liv.id}" />
+						</h:commandLink>
+						
+						 | <h:commandLink
+							action="#{livraisonController.showAjouterColis()}"
+							value="Ajouter colis">
+							<f:param name="livraisonId2" value="#{liv.id}" />
+						</h:commandLink>
+					</h:column>
+				</h:dataTable>
+			</b:tab>
+			<b:tab title="Mes réservations">
+				<h3>liste de mes réservations</h3>
+				<h:dataTable value="#{utilisateurProfilController.reservations}"
+					border="1" cellpadding="5" cellspacing="5" var="reser"
+					styleClass="livTable" headerClass="livTableHeader"
+					rowClasses="livTableOddRow, livTableEvenRow">
+					<h:column>
+						<f:facet name="header">Date de réservation</f:facet>
+						<h:outputText value="#{reser.dateReservation}">
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nom du service</f:facet>
+						<h:outputText value="#{reser.service.nomduService}">
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Date de départ</f:facet>
+						<h:outputText
+							value="#{reser.service.infoDebutService.dateDeDepart}">
+							<f:convertDateTime locale="fr" type="date" dateStyle="full"
+								pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Heure de départ</f:facet>
+						<h:outputText
+							value="#{reser.service.infoDebutService.heureDeDepart}">
+							<f:convertDateTime locale="fr" type="time" pattern="h:mm" />
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Date de fin</f:facet>
+						<h:outputText value="#{reser.service.infoFinService.dateDArrivee}">
+							<f:convertDateTime locale="fr" type="date" dateStyle="full"
+								pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Heure de fin</f:facet>
+						<h:outputText
+							value="#{reser.service.infoFinService.heureDArrivee}">
+							<f:convertDateTime locale="fr" type="time" pattern="h:mm" />
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Total à payer</f:facet>
+						<h:outputText value="#{reser.totalPayer}">
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Etat de la réservation</f:facet>
+						<h:outputText value="#{reser.etatReservation}">
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Contact</f:facet>
+						<h:outputText value="#{reser.utilisateur.contact.telephone}">
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nom du contributeur</f:facet>
+						<h:outputText
+							value="#{reser.utilisateur.infoPersonnelle.nom} #{reser.utilisateur.infoPersonnelle.prenom}">
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Action </f:facet>
+						<h:commandLink
+							action="#{reservationController.annulerReservation()}"
+							onclick="return confirm('Confirmez-vous l'annulation ?')"
+							value="Annuler" />
+						<h:commandLink
+							action="#{paiementController.payerReservation(reservation.id)}"
+							value="Payer" />
+					</h:column>
+				</h:dataTable>
+			</b:tab>
+			<b:tab title="Mes Avis">
+				<h3>liste de mes avis</h3>
+			</b:tab>
+			<b:tab title="Mes Véhicules">
+				<h3>liste de mes véhicules</h3>
+				<h:dataTable rows="5"
+					value="#{utilisateurProfilController.vehicules}" border="1"
+					cellpadding="2" cellspacing="2" var="vehicule"
+					styleClass="livTable" headerClass="livTableHeader"
+					rowClasses="livTableOddRow, livTableEvenRow">
+					<h:column>
+						<f:facet name="header">Id Véhicule </f:facet>
+						#{vehicule.id}
+						</h:column>
+				</h:dataTable>
+			</b:tab>
+		</b:tabView>
+	</h:form>
+</body>
+</html>

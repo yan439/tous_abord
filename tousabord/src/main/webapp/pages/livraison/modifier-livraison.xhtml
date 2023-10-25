@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+
+
+<f:metadata>
+
+	<f:event listener="#{modifierLivraisonController.init()}"
+		type="preRenderView"></f:event>
+
+</f:metadata>
+
+<h:head>
+	<title>Modifier Livraison</title>
+	<h:outputStylesheet library="css" name="styleromuald.css" />
+	
+
+</h:head>
+<body>
+	<b:form>
+	<b:container fluid="true" contentDisabled="false">
+		<b:row contentDisabled="false"><h3>Modification Service de Livraison</h3></b:row>
+		<b:row contentDisabled="false">
+			<b:column span="4"></b:column>
+
+			<b:column span="2" contentDisabled="false">
+			
+				<b:inputText placeholder="Numero"
+						value="#{modifierLivraisonController.livraison.infoDebutService.lieuDeDepart.numero}" label="Numero" />
+				<b:inputText placeholder="Code postal"
+						value="#{modifierLivraisonController.livraison.infoDebutService.lieuDeDepart.codePostal}" label="Code postal" />
+						<b:dateTimePicker locale="fr"  mode="toggle-icon"
+						showWeek="true"
+						value="#{modifierLivraisonController.livraison.infoDebutService.dateDeDepart}"
+						required="true"  label="Date de départ" />
+						<b:inputText placeholder="Numero"
+						value="#{modifierLivraisonController.livraison.infoFinService.lieuDArrivee.numero}" label="Numero" />
+						<b:inputText placeholder="Code postal"
+						value="#{modifierLivraisonController.livraison.infoFinService.lieuDArrivee.codePostal}" label="Code postal"/>
+						<b:dateTimePicker locale="fr"  mode="toggle-icon" showWeek="true"
+						value="#{modifierLivraisonController.livraison.infoFinService.dateDArrivee}" 
+						required="true"  label="Date d'arrivée"/>
+						<b:inputText placeholder="Prix"
+						value="#{modifierLivraisonController.livraison.montant}" label = "Prix"/>
+						<b:commandButton value="Modifier"
+						action="#{modifierLivraisonController.modifierLivraison()}"
+						look="primary" />
+				
+			</b:column>
+			
+			<b:column span="2">
+			<b:inputText placeholder="Voie"
+						value="#{modifierLivraisonController.livraison.infoDebutService.lieuDeDepart.voie}" label="Voie"/>
+				<b:inputText placeholder="Ville de départ"
+						value="#{modifierLivraisonController.livraison.infoDebutService.lieuDeDepart.ville}" label="Ville de départ"/>
+						<b:dateTimePicker locale="fr" mode="toggle-icon"
+						showWeek="true"
+						value="#{modifierLivraisonController.livraison.infoDebutService.heureDeDepart}"
+						required="true"  label="Heure de départ"/>
+						<b:inputText placeholder="Voie"
+						value="#{modifierLivraisonController.livraison.infoFinService.lieuDArrivee.voie}" label="Voie" />
+						<b:inputText placeholder="Ville d'arrivée"
+						value="#{modifierLivraisonController.livraison.infoFinService.lieuDArrivee.ville}" label="Ville d'arrivée"/>
+						<b:dateTimePicker locale="fr"  mode="toggle-icon"
+						showWeek="true"
+						value="#{modifierLivraisonController.livraison.infoFinService.heureDArrivee}"
+						required="true"  label="Heure d'arrivée" />
+					
+			</b:column>
+			
+		</b:row>
+		
+		<hr />
+		<!-- Liste des colis associés à la livraison  -->
+
+			<h3>Liste des colis associciés à la livraison</h3>
+
+				<h:dataTable value="#{modifierLivraisonController.listeColis}" border="1"
+				cellpadding="5" cellspacing="5" var="colis" styleClass="livTable"
+				headerClass="livTableHeader"
+				rowClasses="livTableOddRow, livTableEvenRow">
+
+
+				<h:column>
+					<f:facet name="header">Description </f:facet>
+					<h:outputText value="#{colis.description}" />
+
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Poids</f:facet>
+					<h:outputText
+						value="#{colis.poids}">
+					</h:outputText>
+
+				</h:column>
+
+
+				<h:column>
+					<f:facet name="header">Taille</f:facet>
+					<h:outputText
+						value="#{colis.taille}">
+					</h:outputText>
+
+				</h:column>
+
+				
+
+				<h:column>
+					<f:facet name="header">Action </f:facet>
+					<h:commandLink
+						action="#{modifierLivraisonController.showModifierLivraisonColis()}"
+						value="modifier">
+
+						<f:param name="colisId" value="#{colis.id}"/>
+						<f:param name="livraisonId" value="#{modifierLivraisonController.livraison.id}"/>
+
+					</h:commandLink>
+				</h:column>
+
+			</h:dataTable>
+			<h:button icon-rotate="l" iconAwesome="thumbs-up"  styleClass="btn btn-info"
+										outcome="/pages/utilisateur/profil-utilisateur.xhtml"
+										value="Retour au Profil"  look="info" title="icon-rotate='l'"/>
+	
+		
+	</b:container>
+</b:form>
+
+</body>
+
+
+</html>

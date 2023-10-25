@@ -1,0 +1,979 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<meta charset="utf-8" />
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<meta name="description" content="" />
+
+	<meta name="author" content="" />
+
+	<title class="title">Tous A bord</title>
+	<!-- core CSS -->
+	<link href="../resources/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="../resources/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="../resources/css/animate.min.css" rel="stylesheet" />
+	<link href="../resources/css/owl.carousel.css" rel="stylesheet" />
+	<link href="../resources/css/owl.transitions.css" rel="stylesheet" />
+	<link href="../resources/css/prettyPhoto.css" rel="stylesheet" />
+	<link href="../resources/css/main.css" rel="stylesheet" />
+	<link href="../resources/responsive.css" rel="stylesheet" />
+	<link href="../resources/css/add.css" rel="stylesheet" />
+	<link rel="../shortcut icon" href="../images/ico/favicon.ico" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144"
+		href="../resources/images/ico/apple-touch-icon-144-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114"
+		href="../resources/images/ico/apple-touch-icon-114-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72"
+		href="../resources/images/ico/apple-touch-icon-72-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed"
+		href="../resources/images/ico/apple-touch-icon-57-precomposed.png" />
+	<link
+		href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i"
+		rel="stylesheet" />
+	<!--/head-->
+</h:head>
+
+<body class="homepage" id="home">
+
+
+	<header id="header"> <nav id="main-menu"
+		class="navbar navbar-default navbar-fixed-top" role="banner">
+
+	<div class="container">
+
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar" /> <span class="icon-bar" /> <span
+					class="icon-bar" />
+			</button>
+			<a class="navbar-brand" href="index.xhtml"><img
+				src="../resources/images/logo-site.png" class="logo" alt="logo" /></a>
+
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right">
+
+			<h:form>
+				<ul class="nav navbar-nav">
+
+					<li class="scroll active"><a href="#home">Accueil</a></li>
+
+
+					<li class="scroll dropdown"><a href="#services">Services</a>
+
+						<ul>
+							<li><a href="#services">Covoiturage</a></li>
+							<li><a href="./livraison/liste-livraisons.xhtml">Transport
+									de colis</a></li>
+							<li><a href="#services">Location de véhicule</a></li>
+						</ul></li>
+
+					<li class="scroll"><a href="#about">A propos</a></li>
+
+					<li class="scroll"><a href="#meet-team">Notre équipe</a></li>
+
+					<li class="scroll"><a href="#pricing">Forfaits</a></li>
+
+
+					<li class="scroll"><a href="#get-in-touch">Contact</a></li>
+
+					<!-- 				<li class="scroll"><a href="#get-in-touch"><i
+						class="fa-solid fa-users"></i></a></li> -->
+
+					<li><h:link class="btn btn-rounded" outcome="connexion.xhtml"
+							data-toggle="tooltip" data-placement="top" title="Connexion"
+							rendered="#{!connexionController.estConnecte()}">
+							<i class="fa-solid fa-user"></i>
+						</h:link></li>
+
+					<li><h:link class="btn btn-rounded"
+							outcome="inscription.xhtml"
+							rendered="#{!connexionController.estConnecte()}">Inscription</h:link></li>
+
+
+					<li><h:link class="btn btn-rounded"
+							outcome="utilisateur/profil-utilisateur.xhtml"
+							rendered="#{connexionController.estUtilisateur()==true and connexionController.estConnecte()}">Mon profil</h:link>
+
+						<h:link class="btn btn-rounded"
+							outcome="utilisateur/profil-admin.xhtml"
+							rendered="#{connexionController.estUtilisateur()==false and connexionController.estConnecte()}">Mon profil Admin</h:link>
+
+
+					</li>
+
+
+
+					<li class="scroll"><h:commandLink
+							action="#{connexionController.seDeconnecter()}"
+							data-toggle="tooltip" data-placement="top" title="Déconnexion"
+							rendered="#{connexionController.estConnecte()}">Déconnexion</h:commandLink></li>
+				</ul>
+			</h:form>
+		</div>
+	</div>
+	<!--/.container--> </nav> <!--/nav--> </header>
+	<!--/header-->
+	<section id="main-slider">
+
+	<div class="owl-carousel">
+
+		<div class="item"
+			style="background-image: url(../resources/images/covoiturage.jpg);">
+
+			<div class="slider-inner">
+
+				<div class="container">
+
+					<div class="row">
+
+						<div class="col-sm-6">
+
+							<!-- 							<div class="carousel-content">
+
+								<h2>
+									<span>Multi</span> is the best Onepage html template
+								</h2>
+
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+									sed do eiusmod tempor incididunt ut labore et dolore magna
+									incididunt ut labore aliqua.</p>
+								<a class="btn btn-primary btn-lg" href="#">Read More</a>
+							</div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/.item-->
+
+		<div class="item"
+			style="background-image: url(../resources/images/transport-de-colis.jpg);">
+
+			<div class="slider-inner">
+
+				<div class="container">
+
+					<div class="row">
+
+						<div class="col-sm-6">
+
+							<!-- 							<div class="carousel-content">
+
+								<h2>
+									Beautifully designed <span>free</span> one page template
+								</h2>
+
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+									sed do eiusmod tempor incididunt ut labore et dolore magna
+									incididunt ut labore aliqua.</p>
+								<a class="btn btn-primary btn-lg" href="#">Read More</a>
+							</div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="item"
+			style="background-image: url(../resources/images/location-voiturage.jpg);">
+
+			<div class="slider-inner">
+
+				<!-- 				<div class="container">
+
+					<div class="row">
+
+						<div class="col-sm-6">
+
+							<div class="carousel-content">
+
+								<h2>
+									Beautifully designed <span>free</span> one page template
+								</h2>
+
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+									sed do eiusmod tempor incididunt ut labore et dolore magna
+									incididunt ut labore aliqua.</p>
+								<a class="btn btn-primary btn-lg" href="#">Read More</a>
+							</div>
+						</div>
+					</div>
+				</div> -->
+			</div>
+		</div>
+	</div>
+
+	</section>
+
+
+	<section id="services">
+
+	<div class="container">
+
+		<div class="section-header">
+
+			<h2 class="section-title text-center wow fadeInDown">Nos
+				Services</h2>
+
+			<p class="text-center wow fadeInDown">Un service de proximité et
+				d'entraide accessible aussi bien aux entreprises qu'aux
+				associations.</p>
+		</div>
+
+		<div class="row">
+
+			<div class="features">
+
+				<div class="col-md-4 col-sm-6 wow fadeInUp"
+					data-wow-duration="300ms" data-wow-delay="0ms">
+
+					<div class="media service-box">
+
+						<div class="pull-left">
+							<i class="fa fa-line-chart" data-toggle="tooltip"
+								data-placement="top"
+								title="Le contributeur propose un service de co-voiturage , il indique donc dans son annonce : le lieu , la date, le tarif (selon le reglement de la boîte) puis il indique le nombre de place disponible dans son véhicule et la destination ainsi qu'une estimation de la durée du trajet. Le consommateur, celui qui profite du service , réserve une place et une fois sur place il règle son voyage." />
+						</div>
+
+						<div class="media-body">
+
+							<h4 class="media-heading">Covoiturage</h4>
+
+							<p>Trouvez près de chez vous un covoiturage pour votre prochain déplacement.</p>
+						</div>
+					</div>
+				</div>
+				<!--/.col-md-4-->
+
+				<div class="col-md-4 col-sm-6 wow fadeInUp"
+					data-wow-duration="300ms" data-wow-delay="100ms">
+
+					<div class="media service-box">
+
+						<div class="pull-left">
+							<i class="fa fa-cubes" data-toggle="tooltip" data-placement="top"
+								title="L'envoi de colis dans un premier temps le contributeur(offre le service) dépose sur le site sa proposition de transport de colis puis le consommateur qui se connecte prend connaissant de cette offre et reserve un envoi de colis pour une tierce personne, elle communique differentes caratéristiques comme le type de colis (fragile, solide, liquide) mais aussi le poid et le format du colis. Enfin l'expéditeur communique un code que seul l'expéditeur et le destinaitaire connait afin de réceptionné le colis en toute sérénité et sécurité, à réception une photo est faite du colis afin d'y montrer son état" />
+						</div>
+
+						<div class="media-body">
+
+							<h4 class="media-heading">Transport de colis</h4>
+
+							<p>Envoyez un colis par l'intermédiaire d'une personne proche
+								de chez vous !</p>
+						</div>
+					</div>
+				</div>
+				<!--/.col-md-4-->
+
+				<div class="col-md-4 col-sm-6 wow fadeInUp"
+					data-wow-duration="300ms" data-wow-delay="200ms">
+
+					<div class="media service-box">
+
+						<div class="pull-left">
+							<i class="fa fa-pie-chart" data-toggle="tooltip"
+								data-placement="top"
+								title="Le contributeur propose son véhicule à la location et fait une proposition sur le site puis le consommateur qui souhaite faire une location effectue une reservation sur le site puis une fois validée , les parties se donnent rendez vous et une fois les formalités administratives faites la location peut debuter." />
+						</div>
+
+						<div class="media-body">
+
+							<h4 class="media-heading">Location de véhicule</h4>
+
+							<p>Louez un véhicule près de chez vous en toute simplicité.</p>
+						</div>
+					</div>
+				</div>
+				<!--/.col-md-4-->
+
+				<div class="col-md-4 col-sm-6 wow fadeInUp"
+					data-wow-duration="300ms" data-wow-delay="300ms">
+
+					<!-- <div class="media service-box">
+
+						<div class="pull-left">
+							<i class="fa fa-bar-chart" />
+						</div>
+
+						<div class="media-body">
+
+							<h4 class="media-heading">Aide à la personne</h4>
+
+							<p>Backed by some of the biggest names in the industry,
+								Firefox OS is an open platform that fosters greater</p>
+						</div>
+					</div> -->
+				</div>
+				<!--/.col-md-4-->
+
+				<!-- 				<div class="col-md-4 col-sm-6 wow fadeInUp"
+					data-wow-duration="300ms" data-wow-delay="400ms">
+
+					<div class="media service-box">
+
+						<div class="pull-left">
+							<i class="fa fa-language" />
+						</div>
+
+						<div class="media-body">
+
+							<h4 class="media-heading">Android App</h4>
+
+							<p>Backed by some of the biggest names in the industry,
+								Firefox OS is an open platform that fosters greater</p>
+						</div>
+					</div>
+				</div>
+				/.col-md-4
+
+				<div class="col-md-4 col-sm-6 wow fadeInUp"
+					data-wow-duration="300ms" data-wow-delay="500ms">
+
+					<div class="media service-box">
+
+						<div class="pull-left">
+							<i class="fa fa-bullseye" />
+						</div>
+
+						<div class="media-body">
+
+							<h4 class="media-heading">Win App</h4>
+
+							<p>Backed by some of the biggest names in the industry,
+								Firefox OS is an open platform that fosters greater</p>
+						</div>
+					</div>
+				</div> -->
+				<!--/.col-md-4-->
+			</div>
+		</div>
+		<!--/.row-->
+	</div>
+	<!--/.container--> </section>
+	<!--/#services-->
+	<section id="pricing">
+
+	<div class="container">
+
+		<div class="section-header">
+
+			<h2 class="section-title text-center wow fadeInDown">Forfaits
+				disponibles</h2>
+
+			<p class="text-center wow fadeInDown">Choisissez le forfait qui
+				vous convient le mieux pour votre activité !</p>
+		</div>
+
+		<div class="row">
+
+			<div class="col-sm-6 col-md-3">
+
+				<div class="wow zoomIn" data-wow-duration="400ms"
+					data-wow-delay="0ms">
+
+					<ul class="pricing">
+
+						<li class="plan-header">
+
+							<div class="price-duration">
+								<span class="price"> 60€ </span> <span class="duration">
+									par mois </span>
+							</div>
+
+							<div class="plan-name">Forfait Standard entreprise</div>
+						</li>
+
+						<!-- 						<li><strong>Covoiturage</strong></li>
+
+						<li><strong>Transport de colis</strong></li>
+
+						<li><strong>Location de véhicule</strong></li> -->
+
+
+						<li>Description du service :</li>
+
+						<li><strong>Deux services au maximum</strong></li>
+
+						<li><strong>Support site</strong> 5/7 jours</li>
+
+						<li><strong>Site modulable</strong></li>
+
+						<li class="plan-purchase"><a class="btn btn-primary" href="#">Choisir
+						</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-sm-6 col-md-3">
+
+				<div class="wow zoomIn" data-wow-duration="400ms"
+					data-wow-delay="200ms">
+
+					<ul class="pricing">
+
+						<li class="plan-header">
+
+							<div class="price-duration">
+								<span class="price"> 80€ </span> <span class="duration">
+									par mois </span>
+							</div>
+
+							<div class="plan-name">Forfait Premium entreprise</div>
+						</li>
+
+						<!-- 					<li><strong>Covoiturage</strong></li>
+
+						<li><strong>Transport de colis</strong></li>
+
+						<li><strong>Location de véhicule</strong></li> -->
+
+
+						<li>Description du service :</li>
+
+						<li><strong>Tous les services disponibles</strong></li>
+
+						<li><strong>Support site</strong> 7/7 jours</li>
+
+						<li><strong>Site modulable</strong></li>
+
+						<li class="plan-purchase"><a class="btn btn-primary" href="#">Choisir
+						</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-sm-6 col-md-3">
+
+				<div class="wow zoomIn" data-wow-duration="400ms"
+					data-wow-delay="400ms">
+
+					<ul class="pricing">
+
+						<li class="plan-header">
+
+							<div class="price-duration" style="background-color: orange;">
+								<span class="price"> 45€ </span> <span class="duration">
+									par mois </span>
+							</div>
+
+							<div class="plan-name">FORFAIT STANDARD association</div>
+						</li>
+
+						<!-- 						<li><strong>Covoiturage</strong></li>
+
+						<li><strong>Transport de colis</strong></li>
+
+						<li><strong>Location de véhicule</strong></li> -->
+
+
+						<li>Description du service :</li>
+
+						<li><strong>Deux services au maximum</strong></li>
+
+						<li><strong>Support site</strong> 5/7 jours</li>
+
+						<li><strong>Site modulable</strong></li>
+
+						<li class="plan-purchase"><a class="btn btn-primary" href="#">Choisir
+						</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-sm-6 col-md-3">
+
+				<div class="wow zoomIn" data-wow-duration="400ms"
+					data-wow-delay="600ms">
+
+					<ul class="pricing">
+
+						<li class="plan-header">
+
+							<div class="price-duration">
+								<span class="price"> 65€</span> <span class="duration">
+									par mois </span>
+							</div>
+
+							<div class="plan-name">FORFAIT PREMIUM association</div>
+						</li>
+
+						<!-- 						<li><strong>Covoiturage</strong></li>
+
+						<li><strong>Transport de colis</strong></li>
+
+						<li><strong>Location de véhicule</strong></li>
+						 -->
+
+						<li>Description du service :</li>
+
+						<li><strong>Tous les services disponibles</strong></li>
+
+						<li><strong>Support site</strong> 7/7 jours</li>
+
+						<li><strong>Site modulable</strong></li>
+
+						<li class="plan-purchase"><a class="btn btn-primary" href="#">Choisir
+						</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+
+	<!--/#portfolio-->
+	<section id="about">
+
+	<div class="container">
+
+		<div class="section-header">
+
+			<h2 class="section-title text-center wow fadeInDown">A propos</h2>
+
+			<p class="text-center wow fadeInDown">
+
+				Créée le 28 août 2022 par le comité de direction de la start-up <strong>Tous
+					A bord</strong>, cette dernière décide de créer une application <strong>"TOUS
+					A BORD "</strong>. Son objectif sera de faciliter les déplacements des
+				populations périurbaines durement impactées par l'augmentation du
+				prix du carburant. Ainsi, une plateforme unique sera mise à leur
+				disposition afin de leur permettre de mutualiser plusieurs services
+				comme le covoituarge, le service de transport de biens et de services
+				ainsi que la location de véhicules entre particuliers, qui leur
+				permettra aussi de faciliter de leur expérience utilisateur. La force
+				de <strong>"TOUS A BORD "</strong> est qu'elle met aussi à disposition de ses utilisateurs
+				un service d'aide à la personne totalement gratuit afin que les
+				utilisateurs puissent se rendre des services mutuellement et ainsi
+				mettre en valeur la solidarité.
+			</p>
+		</div>
+
+		<div class="row">
+
+			<div class="col-sm-6 wow fadeInLeft"></div>
+
+
+		</div>
+	</div>
+	</section>
+	<!--/#about-->
+	<section id="work-process">
+
+	<div class="container">
+
+		<div class="section-header">
+
+			<h2 class="section-title text-center wow fadeInDown">Nos étapes</h2>
+
+			<p class="text-center wow fadeInDown">Un abonnement , un suivi de
+				l'expérience client passe par un support client rigoureux et à
+				l'écoute !</p>
+		</div>
+
+		<div class="row text-center">
+
+			<div class="col-md-2 col-md-4 col-xs-6">
+
+				<div class="wow fadeInUp" data-wow-duration="400ms"
+					data-wow-delay="0ms">
+
+					<div class="icon-circle">
+						<span>1</span> <i class="fa fa-coffee fa-2x" />
+					</div>
+
+					<h3>RENCONTRE</h3>
+				</div>
+			</div>
+
+			<div class="col-md-2 col-md-4 col-xs-6">
+
+				<div class="wow fadeInUp" data-wow-duration="400ms"
+					data-wow-delay="100ms">
+
+					<div class="icon-circle">
+						<span>2</span> <i class="fa fa-bullhorn fa-2x" />
+					</div>
+
+					<h3>PLAN</h3>
+				</div>
+			</div>
+
+			<div class="col-md-2 col-md-4 col-xs-6">
+
+				<div class="wow fadeInUp" data-wow-duration="400ms"
+					data-wow-delay="200ms">
+
+					<div class="icon-circle">
+						<span>3</span> <i class="fa fa-image fa-2x" />
+					</div>
+
+					<h3>DESIGN</h3>
+				</div>
+			</div>
+
+			<div class="col-md-2 col-md-4 col-xs-6">
+
+				<div class="wow fadeInUp" data-wow-duration="400ms"
+					data-wow-delay="300ms">
+
+					<div class="icon-circle">
+						<span>4</span> <i class="fa fa-heart fa-2x" />
+					</div>
+
+					<h3>DEVELOPPEMENT</h3>
+				</div>
+			</div>
+
+			<div class="col-md-2 col-md-4 col-xs-6">
+
+				<div class="wow fadeInUp" data-wow-duration="400ms"
+					data-wow-delay="400ms">
+
+					<div class="icon-circle">
+						<span>5</span> <i class="fa fa-shopping-cart fa-2x" />
+					</div>
+
+					<h3>TEST</h3>
+				</div>
+			</div>
+
+			<div class="col-md-2 col-md-4 col-xs-6">
+
+				<div class="wow fadeInUp" data-wow-duration="400ms"
+					data-wow-delay="500ms">
+
+					<div class="icon-circle">
+						<span>6</span> <i class="fa fa-space-shuttle fa-2x" />
+					</div>
+
+					<h3>LANCEMENT</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+	<!--/#work-process-->
+	<section id="meet-team">
+
+	<div class="container">
+
+		<div class="section-header">
+
+			<h2 class="section-title text-center wow fadeInDown">Notre
+				Equipe</h2>
+
+			<p class="text-center wow fadeInDown">Une équipe dédiée à votre
+				écoute et appliquée afin de rendre l'expérience utilisateur la plus
+				confortable possible</p>
+		</div>
+
+		<div class="row">
+
+			<div class="col-sm-4 col-xs-6 team-column col-md-3">
+
+				<div class="team-member wow fadeInUp" data-wow-duration="400ms"
+					data-wow-delay="100ms">
+
+					<div class="team-img">
+
+						<img class="img-responsive" src="" alt="" />
+
+					</div>
+
+					<div class="team-info">
+
+						<h3>Yannick SOURIGUES</h3>
+
+						<span>Trésorier</span>
+
+					</div>
+
+					<p>Anciennement ingénieur en biochimie des protéines, il
+						performe sur le côté back-end de l'application et développe ainsi
+						de multiples fonctionnalités utilisateurs.</p>
+
+					<ul class="social-icons">
+
+						<li><a href="#"><i class="fa fa-facebook" /></a></li>
+
+						<li><a href="#"><i class="fa fa-twitter" /></a></li>
+
+						<li><a href="#"><i class="fa fa-google-plus" /></a></li>
+
+						<li><a href="#"><i class="fa fa-linkedin" /></a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-sm-4 col-xs-6 team-column col-md-3">
+
+				<div class="team-member wow fadeInUp" data-wow-duration="400ms"
+					data-wow-delay="200ms">
+
+					<div class="team-img">
+
+						<img class="img-responsive" src="" alt="" />
+
+					</div>
+
+					<div class="team-info">
+
+						<h3>Romuald NGUENGA</h3>
+
+						<span>Chef de Projet MOA et Directeur </span>
+
+					</div>
+
+					<p>Anciennement Ingénieur généraliste, il développe le Java
+						côté back-end et ne cesse d'enrichir les fonctionalités
+						utilisateurs. Son côté data scientist lui permet de mettre en
+						avant son aspect technique au niveau de l'API.</p>
+
+					<ul class="social-icons">
+
+						<li><a href="#"><i class="fa fa-facebook" /></a></li>
+
+						<li><a href="#"><i class="fa fa-twitter" /></a></li>
+
+						<li><a href="#"><i class="fa fa-google-plus" /></a></li>
+
+						<li><a href="#"><i class="fa fa-linkedin" /></a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-sm-4 col-xs-6 team-column col-md-3">
+
+				<div class="team-member wow fadeInUp" data-wow-duration="400ms"
+					data-wow-delay="300ms">
+
+					<div class="team-img">
+
+						<img class="img-responsive" src="" alt="" />
+
+					</div>
+
+					<div class="team-info">
+
+						<h3>Frédéric FERRIE</h3>
+
+						<span>Co-fondateur</span>
+
+					</div>
+
+					<p>Anciennement Responsable Paie et RH, il s'occupe
+						essentiellement de la partie front-end mais s'emploie aussi dans
+						la partie back-end afin que l'expérience utilisateur soit la plus
+						agréable possible.</p>
+
+					<ul class="social-icons">
+
+						<li><a href="#"><i class="fa fa-facebook" /></a></li>
+
+						<li><a href="#"><i class="fa fa-twitter" /></a></li>
+
+						<li><a href="#"><i class="fa fa-google-plus" /></a></li>
+
+						<li><a href="#"><i class="fa fa-linkedin" /></a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-sm-4 col-xs-6 team-column col-md-3">
+
+				<div class="team-member wow fadeInUp" data-wow-duration="400ms"
+					data-wow-delay="0ms">
+
+					<div class="team-img">
+						<img class="img-responsive" src="" alt="" style="width: 100%;" />
+
+					</div>
+
+					<div class="team-info">
+
+						<h3>Hamid HABCHI</h3>
+
+						<span>Fondateur</span>
+
+					</div>
+
+					<p>Anciennement Ingénieur en bio-technologie, il s'emploie dans
+						la partie back-end afin d'enrichir la partie compte utilisateur la
+						plus agréable possible.</p>
+
+					<ul class="social-icons">
+
+						<li><a href="#"><i class="fa fa-facebook" /></a></li>
+
+						<li><a href="#"><i class="fa fa-twitter" /></a></li>
+
+						<li><a href="#"><i class="fa fa-google-plus" /></a></li>
+
+						<li><a href="#"><i class="fa fa-linkedin" /></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="divider" />
+
+
+	</div>
+	</section>
+
+	<!--/#animated-number-->
+
+	<!--/#pricing-->
+
+
+
+	<section id="get-in-touch"> <a class="joli"
+		href="../pages/client/jomi2.xhtml">
+
+		<div class="container">
+
+			<div class="section-header">
+
+				<h2 class="section-title text-center wow fadeInDown">Ils nous
+					ont fait confiance</h2>
+
+				
+				<div class="client1">
+					<img src="../resources/images/Ecomobile.png" alt=""
+						style="margin-left: 20rem; border-radius: 20px;"></img>
+						<img src="../resources/images/joliColis.png" alt=""
+						style="margin-left: 55rem; border-radius: 20px; width:7.7%; padding-top:5px;"></img>
+						<img src="../resources/images/download.png" alt=""
+						style="margin-left: 55rem; border-radius: 20px; width:7.7%; padding-top:5px;"></img>
+				</div>
+				<div class="client1">
+					
+				</div>
+
+			</div>
+		</div>
+	</a></section>
+	<!--/#get-in-touch-->
+	<section id="contact">
+
+
+	<div class="container-wrapper">
+
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-4 col-md-offset-8 col-sm-6 col-sm-offset-6">
+
+					<div class="contact-form">
+
+						<h3>Contact Info</h3>
+						<address>
+							<strong>Twitter, Inc.</strong><br /> 795 Folsom Ave, Suite 600<br />
+							San Francisco, CA 94107<br /> <abbr title="Phone">P:</abbr>
+							(123) 456-7890
+						</address>
+						<form id="main-contact-form" name="contact-form" method="post"
+							action="#">
+
+							<div class="form-group">
+								<input type="text" name="name" class="form-control"
+									placeholder="Name" required="" />
+							</div>
+
+							<div class="form-group">
+								<input type="email" name="email" class="form-control"
+									placeholder="Email" required="" />
+							</div>
+
+							<div class="form-group">
+								<input type="text" name="subject" class="form-control"
+									placeholder="Subject" required="" />
+							</div>
+
+							<div class="form-group">
+								<textarea name="message" class="form-control" rows="8"
+									placeholder="Message" required="" />
+							</div>
+							<button type="submit" class="btn btn-primary">Send
+								Message</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+
+	<footer id="footer">
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-sm-6">
+				© 2014 Your Company. Designed by <a target="_blank"
+					href="http://shapebootstrap.net/"
+					title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>
+			</div>
+
+			<div class="col-sm-6">
+
+				<ul class="social-icons">
+
+					<li><a href="#"><i class="fa fa-facebook" /></a></li>
+
+					<li><a href="#"><i class="fa fa-twitter" /></a></li>
+
+					<li><a href="#"><i class="fa fa-google-plus" /></a></li>
+
+					<li><a href="#"><i class="fa fa-pinterest" /></a></li>
+
+					<li><a href="#"><i class="fa fa-dribbble" /></a></li>
+
+					<li><a href="#"><i class="fa fa-behance" /></a></li>
+
+					<li><a href="#"><i class="fa fa-flickr" /></a></li>
+
+					<li><a href="#"><i class="fa fa-youtube" /></a></li>
+
+					<li><a href="#"><i class="fa fa-linkedin" /></a></li>
+
+					<li><a href="#"><i class="fa fa-github" /></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	</footer>
+
+
+
+</body>
+<script src="../resources/js/jquery.js"></script>
+<script src=".../resources/js/bootstrap.min.js"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script src="../resources/js/owl.carousel.min.js"></script>
+<script src="../resources/js/mousescroll.js"></script>
+<script src="../resources/js/smoothscroll.js"></script>
+<script src="../resources/js/jquery.prettyPhoto.js"></script>
+<script src="../resources/js/jquery.isotope.min.js"></script>
+<script src="../resources/js/jquery.inview.min.js"></script>
+<script src="../resources/js/wow.min.js"></script>
+<script src="../resources/js/main.js"></script>
+<script src="https://kit.fontawesome.com/99af1230fd.js"
+	crossorigin="anonymous"></script>
+</html>

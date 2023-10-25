@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"> 
+
+
+<f:metadata>
+	<f:event listener="#{utilisateurController.onLoad()}"
+		type="preRenderView"></f:event>
+</f:metadata>
+
+<h:head>
+
+<meta charset="UTF-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="../resources/images/logo-site.png"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/vendor/bootstrap/css/bootstrap.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/fonts/font-connexion/font-awesome-4.7.0/css/font-awesome.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/fonts/font-connexion/iconic/css/material-design-iconic-font.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/vendor/animate/animate.css"/>
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="../resources/vendor/css-hamburgers/hamburgers.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/vendor/animsition/css/animsition.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/vendor/select2/select2.min.css"/>
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="../resources/vendor/daterangepicker/daterangepicker.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/css/css-connexion/util.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/css/css-connexion/main.css"/>
+<!--===============================================================================================-->
+
+</h:head> 
+<body> 
+<div class="limiter">
+		<div class="container-login100" style="background-image: url('');">
+			<div class="wrap-login100">
+				<h:form class="login100-form validate-form">
+					<span class="login100-form-logo">
+						<img class="logoVoiture" src="../resources/images/logo-site.png" alt="" />
+					</span>
+
+					<span class="login100-form-title p-b-34 p-t-27">
+						Modifier profil utilisateur 
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "nom">
+						<h:inputText class="input100" name="Raison social" a:placeholder="Nom"
+							value="#{utilisateurController.utilisateur.infoPersonnelle.nom}" />
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Prenom">
+						<h:inputText class="input100" name="Raison social" a:placeholder="Prenom"
+							value="#{utilisateurController.utilisateur.infoPersonnelle.prenom}" />
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+					
+					<div class="wrap-input100 validate-input" data-validate = "Numéro de téléphone">
+						<h:inputText class="input100" name="Raison social" a:placeholder="Numéro de téléphone"
+							value="#{utilisateurController.utilisateur.contact.telephone}" />
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+					<div> <h4> Adresse</h4>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Numero ">
+						<h:inputText class="input100" name="Raison social" a:placeholder="Numéro"
+							value="#{utilisateurController.utilisateur.adresse.numero}" />
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Voie">
+						<h:inputText class="input100" name="Raison social" a:placeholder="Voie"
+							value="#{utilisateurController.utilisateur.adresse.voie}" />
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Ville">
+						<h:inputText class="input100" name="Raison social" a:placeholder="Ville"
+							value="#{utilisateurController.utilisateur.adresse.ville}" />
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+					
+					
+					<div class="ui-fluid row">
+						<div class="col-12 col-md-1 mt-3"></div>
+						<div class="col-12 col-md-10 mt-3">
+							<p:fileUpload skinSimple="true"
+								uploadButtonStyleClass="ui-button-outlined ui-button-secondary"
+								chooseButtonStyleClass="ui-button-outlined ui-button-secondary"
+								cancelButtonStyleClass="ui-button-outlined ui-button-secondary"
+								label="Choisissez une image" mode="advanced" sizeLimit="5000000"
+								fileLimit="1" accept=".gif,.jpg,.jpeg,.png"
+								invalidSizeMessage="L'image ne doit pas dépasser 5 Mo"
+								listener="#{utilisateurController.upload}" />
+
+						</div>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<h:commandButton class="login100-form-btn"
+							action="#{utilisateurController.modifierUtilisateur()}"
+							
+							value="modifier compte " />
+							 	<f:param name="orgId" value="#{org.id}"></f:param>
+					</div>
+					</h:form>
+			</div>
+		</div>
+	</div>
+		
+	
+
+	<div id="dropDownSelect1"></div>
+	
+	
+</body> 
+</html>
+
+
+

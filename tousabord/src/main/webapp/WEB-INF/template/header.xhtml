@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich">
+
+<h:head>
+	<meta charset="utf-8" />
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<meta name="description" content="" />
+
+	<meta name="author" content="" />
+
+	<title class="title">Tous A bord</title>
+	<!-- core CSS -->
+	<link href="../resources/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="../resources/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="../resources/css/animate.min.css" rel="stylesheet" />
+	<link href="../resources/css/owl.carousel.css" rel="stylesheet" />
+	<link href="../resources/css/owl.transitions.css" rel="stylesheet" />
+	<link href="../resources/css/prettyPhoto.css" rel="stylesheet" />
+	<link href="../resources/css/css-header/mainheader.css" rel="stylesheet" />
+	<link href="../resources/responsive.css" rel="stylesheet" />
+	<link href="../resources/css/add.css" rel="stylesheet" />
+	<link rel="../shortcut icon" href="../images/ico/favicon.ico" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144"
+		href="../resources/images/ico/apple-touch-icon-144-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114"
+		href="../resources/images/ico/apple-touch-icon-114-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72"
+		href="../resources/images/ico/apple-touch-icon-72-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed"
+		href="../resources/images/ico/apple-touch-icon-57-precomposed.png" />
+	<link
+		href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i"
+		rel="stylesheet" />
+	<!--/head-->
+</h:head>
+<h:body>
+
+	<div class="container">
+
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar" /> <span class="icon-bar" /> <span
+					class="icon-bar" />
+			</button>
+			<a class="navbar-brand" href="index.xhtml"><img
+				src="../resources/images/logo-site.png" class="logo" alt="logo" /></a>
+
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right">
+
+				<h:form>
+			<ul class="nav navbar-nav">
+
+				<li class="scroll active"><a href="#home">Accueil</a></li>
+				<!-- <li class="scroll"><a href="#features">Features</a></li> -->
+
+				<li class="scroll"><a href="#services">Services</a></li>
+
+
+				<li class="scroll"><a href="#about">A propos</a></li>
+
+				<li class="scroll"><a href="#meet-team">Notre équipe</a></li>
+
+				<li class="scroll"><a href="#pricing">Forfaits</a></li>
+
+
+				<li class="scroll"><a href="#get-in-touch">Contact</a></li>
+
+				<li class="scroll"><a href="#get-in-touch"><i
+						class="fa-solid fa-users"></i></a></li>
+
+				<li><h:link class="btn btn-rounded" outcome="connexion.xhtml"
+						rendered="#{!connexionController.estConnecte()}">Connexion/Inscription</h:link></li>
+				<li class="scroll">
+				 <h:commandLink action="#{connexionController.seDeconnecter()}" 
+					rendered="#{connexionController.estConnecte()}">Se déconnecter</h:commandLink></li>
+			</ul>
+				</h:form>
+		</div>
+	</div>
+	
+	
+	
+	
+</h:body>
+</html>

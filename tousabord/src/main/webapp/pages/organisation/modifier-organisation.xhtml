@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<f:metadata>
+	<f:event listener="#{organisationController.onLoad()}"
+		type="preRenderView"></f:event>
+</f:metadata>
+<h:head>
+
+<meta charset="UTF-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="../resources/images/logo-site.png"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/vendor/bootstrap/css/bootstrap.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/fonts/font-connexion/font-awesome-4.7.0/css/font-awesome.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/fonts/font-connexion/iconic/css/material-design-iconic-font.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/vendor/animate/animate.css"/>
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="../resources/vendor/css-hamburgers/hamburgers.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/vendor/animsition/css/animsition.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/vendor/select2/select2.min.css"/>
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="../resources/vendor/daterangepicker/daterangepicker.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/css/css-connexion/util.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/css/css-connexion/main.css"/>
+<!--===============================================================================================-->
+
+</h:head> 
+<body> 
+<div class="limiter">
+		<div class="container-login100" style="background-image: url('');">
+			<div class="wrap-login100">
+				<h:form class="login100-form validate-form">
+					<span class="login100-form-logo">
+						<img class="logoVoiture" src="../resources/images/logo-site.png" alt="" />
+					</span>
+
+					<span class="login100-form-title p-b-34 p-t-27">
+						Creation d'organisation
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Entrez votre nom">
+						<h:inputText class="input100" name="Raison social" a:placeholder="Raison social"
+							value="#{organisationController.organisation.raisonSociale}" />
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Entrez Numero siren">
+						<h:inputText class="input100" name="prenom" a:placeholder="Numero Siren"
+							value="#{organisationController.organisation.numeroSiren}" />
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>					
+					
+					<div class="wrap-input100 validate-input" data-validate = "Entrez votre email">
+						<h:inputText class="input100" name="email" a:placeholder="Email"
+							value="#{organisationController.organisation.compte.email}" />
+						<span class="focus-input100" data-placeholder="@"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Entrez votre mot de passe">
+						<h:inputSecret class="input100" name="mot de passe" a:placeholder="Mot de passe"
+							value="#{organisationController.organisation.compte.motDePasse}" />
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+
+					
+					
+					<div class="ui-fluid row">
+						<div class="col-12 col-md-1 mt-3"></div>
+						<div class="col-12 col-md-10 mt-3">
+							<p:fileUpload skinSimple="true"
+								uploadButtonStyleClass="ui-button-outlined ui-button-secondary"
+								chooseButtonStyleClass="ui-button-outlined ui-button-secondary"
+								cancelButtonStyleClass="ui-button-outlined ui-button-secondary"
+								label="Choisissez une image" mode="advanced" sizeLimit="5000000"
+								fileLimit="1" accept=".gif,.jpg,.jpeg,.png"
+								invalidSizeMessage="L'image ne doit pas dépasser 5 Mo"
+								listener="#{organisationController.upload}" />
+
+						</div>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<h:commandButton class="login100-form-btn"
+							action="#{organisationController.modifierOrganisation()}"
+							value="Modifier profil  organisation" />
+					</div>
+					</h:form>
+			</div>
+		</div>
+	</div>
+		
+	
+
+	<div id="dropDownSelect1"></div>
+	
+	
+</body> 
+</html>
+
+
+

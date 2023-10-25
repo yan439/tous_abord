@@ -1,0 +1,52 @@
+@charset "ISO-8859-1";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+
+
+h3 {
+	text-align: center;
+	margin-top : 15px;
+	margin-bottom: 15px;
+}
+
+.test {
+	
+/* 	background-color: gray; */
+	display : grid;
+	font-size : 15px;
+
+	justify-content: center;
+
+
+}
+
+.test2 {
+	color: blue;
+}
+
+.livTable {   
+   border-collapse:none;
+   border:1px solid #000000;
+}
+
+.livTableHeader {
+   text-align:center;
+   background:none repeat scroll 0 0 #B5B5B5;
+   border-bottom:1px solid #000000;  
+   padding:2px;
+}
+
+.livTableOddRow {
+   text-align:center;
+   
+}
+
+.livTableEvenRow {
+   text-align:center;
+   
+}
+

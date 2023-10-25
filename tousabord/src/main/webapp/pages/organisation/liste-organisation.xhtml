@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<f:metadata>
+	<f:event listener="#{organisationController.init()}" type="preRenderView"></f:event>
+</f:metadata>
+
+<h:head>
+	<h:outputStylesheet library="css" name="styleromuald.css" />
+</h:head>
+<body>
+
+
+	<h2>Liste des organisations </h2>
+	<h:link value="créer organisation" outcome="creer-organisation.xhtml"/>
+	<br />
+
+	<h:form>
+		<h:dataTable rows="5" value="#{organisationController.listeOrganisations}" border="1" cellpadding="2" cellspacing="2"
+			var="org" styleClass="livTable" headerClass="livTableHeader"
+			rowClasses="livTableOddRow, livTableEvenRow">
+
+
+			<h:column>
+				<f:facet name="header">Id </f:facet>
+				<h:outputText value="#{org.id}" />
+               
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Raison sociale </f:facet>
+               #{org.raisonSociale}
+            
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Numéro siren</f:facet>
+               #{org.numeroSiren}
+            
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Adresse </f:facet>
+               #{org.adresse.numero } #{org.adresse.voie} #{org.adresse.ville }
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Action </f:facet>
+               <h:commandLink action="#{organisationController.supprimerOrganisation(org.id)}" onclick="return confirm('Confirmez-vous la suppression ?')" value="Supprimer" />
+
+                | <h:link outcome="modifier-organisation.xhtml"  value="modifier">
+                   	<f:param name="orgId" value="#{org.id}"></f:param>
+                   </h:link>
+                  
+                
+                
+			</h:column>
+			<h:column>
+				<f:facet name="header">Profil </f:facet>
+
+                  
+                   <h:link outcome="profil-organisation.xhtml"  value="Profil">
+                   	<f:param name="orgId" value="#{org.id}"></f:param>
+                   </h:link>
+                
+			</h:column>
+
+		</h:dataTable>
+	</h:form>
+
+</body>
+</html>

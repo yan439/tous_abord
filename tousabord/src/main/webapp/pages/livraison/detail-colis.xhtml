@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+
+
+<f:metadata>
+
+	<f:event listener="#{modifierLivraisonController.init()}"
+		type="preRenderView"></f:event>
+
+</f:metadata>
+
+<h:head>
+	<title>Détail colis</title>
+	<h:outputStylesheet library="css" name="styleromuald.css" />
+	
+
+</h:head>
+<body>
+	<b:form>
+	<b:container fluid="true" contentDisabled="false">
+	
+		<!-- Liste des colis associés à la livraison  -->
+
+			<h3>Liste des colis associciés à la livraison</h3>
+
+				<h:dataTable value="#{modifierLivraisonController.listeColis}" border="1"
+				cellpadding="5" cellspacing="5" var="colis" styleClass="livTable"
+				headerClass="livTableHeader"
+				rowClasses="livTableOddRow, livTableEvenRow">
+
+
+				<h:column>
+					<f:facet name="header">Description </f:facet>
+					<h:outputText value="#{colis.description}" />
+
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Poids</f:facet>
+					<h:outputText
+						value="#{colis.poids}">
+					</h:outputText>
+
+				</h:column>
+
+
+				<h:column>
+					<f:facet name="header">Taille</f:facet>
+					<h:outputText
+						value="#{colis.taille}">
+					</h:outputText>
+
+				</h:column>
+
+				
+
+				<h:column>
+					<f:facet name="header">Action </f:facet>
+					<h:commandLink
+						action="#{modifierLivraisonController.showModifierLivraisonColis()}"
+						value="modifier">
+
+						<f:param name="colisId" value="#{colis.id}"/>
+						<f:param name="livraisonId" value="#{modifierLivraisonController.livraison.id}"/>
+
+					</h:commandLink>
+				</h:column>
+
+			</h:dataTable>
+			<h:button icon-rotate="l" iconAwesome="thumbs-up"  styleClass="btn btn-info"
+										outcome="/pages/utilisateur/profil-utilisateur.xhtml"
+										value="Retour au Profil"  look="info" title="icon-rotate='l'"/>
+	
+		
+	</b:container>
+</b:form>
+
+</body>
+
+
+</ui:composition>

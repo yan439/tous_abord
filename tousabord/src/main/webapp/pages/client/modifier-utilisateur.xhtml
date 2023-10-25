@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+<f:metadata>
+	<f:event listener="#{utilisateurController.onLoad()}"
+		type="preRenderView"></f:event>
+</f:metadata>
+<h:head>
+	<meta charset="UTF-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png"
+		href="../resources/images/logo-site.png" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="../resources/vendor/bootstrap/css/bootstrap.min.css" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="../resources/fonts/font-connexion/font-awesome-4.7.0/css/font-awesome.min.css" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="../resources/fonts/font-connexion/iconic/css/material-design-iconic-font.min.css" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="../resources/vendor/animate/animate.css" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="../resources/vendor/css-hamburgers/hamburgers.min.css" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="../resources/vendor/animsition/css/animsition.min.css" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="../resources/vendor/select2/select2.min.css" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="../resources/vendor/daterangepicker/daterangepicker.css" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="../resources/css/css-connexion/util.css" />
+	<link rel="stylesheet" type="text/css"
+		href="../resources/css/css-connexion/main.css" />
+	<!--===============================================================================================-->
+</h:head>
+<h:body>
+<div id="page">
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="header.xhtml" />
+			</ui:insert>
+		</div>
+
+  <!--   <section class="inner-page" > -->
+      <div class="yo" style="border:2px solid grey; margin-right:40rem; margin-left:40rem; margin-top:5rem; margin-bottom:5rem;border-radius:20px;"><div class="container place" style="margin:15rem 0rem;" >
+      
+      
+		<b:form>
+		<b:container fluid="true" contentDisabled="false">
+			<b:row contentDisabled="false">
+				<h3 style="text-align: center">Modifiez votre profil utilisateur</h3>
+			</b:row>
+			<b:row contentDisabled="false">
+				<b:column span="4"></b:column>
+				<b:column span="2" contentDisabled="false">
+					<b:inputText placeholder="Nom"
+						value="#{utilisateurController.utilisateur.infoPersonnelle.nom}"
+						label="Nom" />
+<!-- 						<b:inputText placeholder="Numéro de téléphone" -->
+<!-- 						value="#{utilisateurController.utilisateur.contact.telephone}" -->
+<!-- 						label="Numéro de téléphone" /> -->
+						<b:inputText placeholder="Numéro"
+						value="#{utilisateurController.utilisateur.adresse.numero}"
+						label="Numéro" />
+						<b:inputText placeholder="Ville"
+						value="#{utilisateurController.utilisateur.adresse.ville}"
+						label="Ville" />
+						
+						
+							<p:fileUpload skinSimple="true"
+								uploadButtonStyleClass="ui-button-outlined ui-button-secondary"
+								chooseButtonStyleClass="ui-button-outlined ui-button-secondary"
+								cancelButtonStyleClass="ui-button-outlined ui-button-secondary"
+								label="Choisissez une image" mode="advanced" sizeLimit="5000000"
+								fileLimit="1" accept=".gif,.jpg,.jpeg,.png"
+								invalidSizeMessage="L'image ne doit pas dépasser 5 Mo"
+								listener="#{utilisateurController.upload}" />
+					
+				
+					<div class="container-login100-form-btn" style="padding-top: 10px">
+						<h:commandButton class="login100-form-btn"
+							action="#{utilisateurController.modifierUtilisateur()}"
+							
+							value="Enregistrer" />
+							 	<f:param name="orgId" value="#{org.id}"></f:param>
+					</div>
+				</b:column>
+				<b:column span="2">
+					<b:inputText placeholder="Prénom"
+						value="#{utilisateurController.utilisateur.infoPersonnelle.prenom}"
+						label="Prénom" />
+						
+						<b:inputText placeholder="Voie"
+						value="#{utilisateurController.utilisateur.adresse.voie}"
+						label="Voie" />
+						
+						<b:inputText placeholder="Code postal"
+						value="#{utilisateurController.utilisateur.adresse.codePostal}"
+						label="Code postal" />
+				</b:column>
+			</b:row>
+		</b:container>
+	</b:form>
+	<div id="dropDownSelect1"></div>
+      </div>
+      </div>
+ <!--    </section> -->
+
+		<div id="footer" >
+			<ui:insert name="footer">
+				<ui:include src="footer.xhtml" />
+			</ui:insert>
+		</div>
+	</div>
+	
+	
+</h:body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+	<f:event listener="#{utilisateurProfilController.onLoad()}"
+		type="preRenderView"></f:event>
+	<f:event listener="#{adminProfilController.init()}"
+		type="preRenderView"></f:event>
+	<!-- 	<f:event listener="#{modifierLivraisonController.init()}" -->
+	<!-- 		type="preRenderView"></f:event> -->
+	<!-- 	<f:event listener="#{reservationController.init()}" -->
+	<!-- 		type="preRenderView"></f:event> -->
+</f:metadata>
+<h:head>
+<!-- 	<h:outputStylesheet library="css" name="styleromuald.css" /> -->
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+		rel="stylesheet"></link>
+	<link rel="styleSheet"
+		href="../../resources/css/css-profilOrganisation/profilOrganisation.css"></link>
+
+	<link rel="stylesheet"
+		href="../../resources/css/css-profilAdmin/profilAdmin.css" />
+
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
+
+</h:head>
+<h:body>
+
+	<div id="mySidenav" class="sidenav">
+		<p class="logo">
+			<span>Tous</span> A Bord
+		</p>
+		<div class="col-div-2">
+			<div class="box">
+				<p>
+					67<br /> <span>Utilisateurs</span>
+				</p>
+				<i class="fa fa-users box-icon"></i>
+			</div>
+		</div>
+
+		<div class="col-div-2">
+			<div class="box">
+				<p>
+					88<br /> <span>Services</span>
+				</p>
+				<i class="fa fa-list box-icon"></i>
+			</div>
+		</div>
+
+
+	</div>
+
+
+
+	<div id="main">
+
+		<div class="head">
+			<div class="col-div-6">
+				<span style="font-size: 30px; cursor: pointer; color: white;"
+					class="nav">☰ Tableau de bord</span> <span
+					style="font-size: 30px; cursor: pointer; color: white;"
+					class="nav2">☰ Tableau de bord</span>
+			</div>
+
+			<div class="col-div-6">
+				<div class="profile">
+					<div class="d-flex flex-column align-items-center text-center">
+						<img
+							src="#{request.contextPath}#{utilisateurProfilController.utilisateur.infoPersonnelle.imagePath}"
+							alt="User" class="rounded-circle" width="150"></img>
+						<!-- 						<div class="mt-3"> -->
+						<h4 style="color: white">#{utilisateurProfilController.utilisateur.infoPersonnelle.nom}
+							#{utilisateurProfilController.utilisateur.infoPersonnelle.prenom}</h4>
+						<h:link class="btn btn-info " outcome="modifier-utilisateur"
+							value="Modifier profil">
+							<f:param name="userId"
+								value="#{utilisateurProfilController.utilisateur.id}"></f:param>
+						</h:link>
+
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+
+		<div class="clearfix"></div>
+		<br />
+
+		<div class="col-div-3">
+			<div class="box">
+				<p>
+					67<br /> <span>Utilisateurs</span>
+				</p>
+				<i class="fa fa-users box-icon"></i>
+			</div>
+		</div>
+		<div class="col-div-3">
+			<div class="box">
+				<p>
+					88<br /> <span>Services</span>
+				</p>
+				<i class="fa fa-list box-icon"></i>
+			</div>
+		</div>
+		<div class="col-div-3">
+			<div class="box">
+				<p>
+					99<br /> <span>A Valider</span>
+				</p>
+				<i class="fa fa-list box-icon"></i>
+			</div>
+		</div>
+		<div class="col-div-3">
+			<div class="box">
+				<p>
+					150 €<br /> <span>Solde</span>
+				</p>
+				<!-- 				<i class="fa fa-tasks box-icon"></i> -->
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<br /> <br />
+		<!-- 		<div class="col-div-12"> -->
+		<!-- 			<div class="box-12"> -->
+
+
+
+
+		<h:form>
+			<b:tabView tabPosition="left"
+				contentStyle="border: 1px solid #ddd;padding:10px">
+				<b:tab title="Utilisateurs">
+					<h3>Liste des utilisateurs</h3>
+				</b:tab>
+				<b:tab title="Services à valider">
+					<!--     							  <b:form> -->
+					<h:dataTable value="#{adminProfilController.livraisons}" border="1"
+						cellpadding="2" cellspacing="2" var="liv" styleClass="livTable"
+						headerClass="livTableHeader"
+						rowClasses="livTableOddRow, livTableEvenRow">
+
+
+						<h:column>
+							<f:facet name="header">Lieu de départ</f:facet>
+							<h:outputText
+								value="#{liv.infoDebutService.lieuDeDepart.numero}  #{liv.infoDebutService.lieuDeDepart.voie},  #{liv.infoDebutService.lieuDeDepart.ville} #{liv.infoDebutService.lieuDeDepart.codePostal}">
+							</h:outputText>
+
+						</h:column>
+
+
+						<h:column>
+							<f:facet name="header">Lieu d'arrivée</f:facet>
+							<h:outputText
+								value="#{liv.infoFinService.lieuDArrivee.numero}  #{liv.infoFinService.lieuDArrivee.voie},  #{liv.infoFinService.lieuDArrivee.ville} #{liv.infoFinService.lieuDArrivee.codePostal}">
+							</h:outputText>
+
+						</h:column>
+
+<!-- 						<h:column> -->
+<!-- 							<f:facet name="header">Date de départ</f:facet> -->
+
+<!-- 							<h:outputText value="#{liv.infoDebutService.dateDeDepart}"> -->
+<!-- 								<f:convertDateTime locale="fr" type="date" dateStyle="full" -->
+<!-- 									pattern="dd/MM/yyyy" /> -->
+<!-- 							</h:outputText> -->
+<!-- 						</h:column> -->
+
+<!-- 						<h:column> -->
+<!-- 							<f:facet name="header">Heure de départ</f:facet> -->
+
+<!-- 							<h:outputText value="#{liv.infoDebutService.heureDeDepart}"> -->
+<!-- 								<f:convertDateTime locale="fr" type="time" pattern="h:mm" /> -->
+<!-- 							</h:outputText> -->
+<!-- 						</h:column> -->
+
+<!-- 						<h:column> -->
+<!-- 							<f:facet name="header">Date d'arrivée</f:facet> -->
+
+<!-- 							<h:outputText value="#{liv.infoFinService.dateDArrivee}"> -->
+<!-- 								<f:convertDateTime locale="fr" type="date" dateStyle="full" -->
+<!-- 									pattern="dd/MM/yyyy" /> -->
+<!-- 							</h:outputText> -->
+<!-- 						</h:column> -->
+
+<!-- 						<h:column> -->
+<!-- 							<f:facet name="header">Heure de départ</f:facet> -->
+
+<!-- 							<h:outputText value="#{liv.infoFinService.heureDArrivee}"> -->
+<!-- 								<f:convertDateTime locale="fr" type="time" pattern="h:mm" /> -->
+<!-- 							</h:outputText> -->
+<!-- 						</h:column> -->
+
+
+
+						<h:column>
+							<f:facet name="header">Etat du service</f:facet>
+
+							<h:outputText value="#{liv.etatService}" />
+
+						</h:column>
+
+
+						<h:column>
+							<f:facet name="header">Montant</f:facet>
+
+							<h:outputText value="#{liv.montant}" />
+
+						</h:column>
+
+
+						<h:column>
+							<f:facet name="header">Action </f:facet>
+
+
+							<h:commandLink
+								action="#{adminProfilController.accepterProposition()}"
+								value="Accepter">
+								<f:param name="livraisonId" value="#{liv.id}" />
+							</h:commandLink>
+				| <h:commandLink
+								action="#{adminProfilController.refuserProposition()}"
+								onclick="return confirm('Confirmez-vous le refus de la proposition ?')"
+								value="Refuser">
+								<f:param name="livraisonId" value="#{liv.id}" />
+							</h:commandLink>
+						</h:column>
+
+					</h:dataTable>
+					<!-- 					</b:form> -->
+				</b:tab>
+			</b:tabView>
+		</h:form>
+
+	</div>
+	<!-- 			</div> -->
+	<!-- 		</div> -->
+
+	<!-- 		<div class="col-div-4"> -->
+	<!-- 			<div class="box-4"> -->
+	<!-- 				<div class="content-box"> -->
+	<!-- 					<p> -->
+	<!-- 						Total Sale <span>Sell All</span> -->
+	<!-- 					</p> -->
+
+	<!-- 					<div class="circle-wrap"> -->
+	<!-- 						<div class="circle"> -->
+	<!-- 							<div class="mask full"> -->
+	<!-- 								<div class="fill"></div> -->
+	<!-- 							</div> -->
+	<!-- 							<div class="mask half"> -->
+	<!-- 								<div class="fill"></div> -->
+	<!-- 							</div> -->
+	<!-- 							<div class="inside-circle">70%</div> -->
+	<!-- 						</div> -->
+	<!-- 					</div> -->
+	<!-- 				</div> -->
+	<!-- 			</div> -->
+	<!-- 		</div> -->
+
+	<div class="clearfix"></div>
+
+
+
+
+
+
+</h:body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<f:metadata>
+	<f:event listener="#{reservationController.init()}"
+		type="preRenderView"></f:event>
+
+</f:metadata>
+
+<h:head>
+	<title>Ajouter colis</title>
+</h:head>
+<body>
+<div id="page">
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="header.xhtml" />
+			</ui:insert>
+		</div>
+		 <section class="inner-page"  style="padding-top:10rem; padding-bottom:12rem; margin:0rem 20rem 0rem 40rem; width:600px;"   >
+      <div class="container place" style="border:2px solid grey; border-radius:20px;"  >
+	<b:form>
+		<b:container fluid="true" contentDisabled="false">
+			<b:row contentDisabled="false">
+				<h3 style="text-align: center">Ajout de colis au service de
+					livraison</h3>
+			</b:row>
+
+			<b:row>
+				<b:column span="5"></b:column>
+
+				<b:column span="2">
+					<b:selectOneMenu value="#{livraisonController.colis.taille}">
+						<f:selectItem itemLabel="-- Choisissez --" noSelectionOption="true" />
+
+						<f:selectItem itemValue="S" itemLabel="Objet de taille petite (S)" />
+						<f:selectItem itemValue="M"
+							itemLabel="Objet de taille moyenne (M)" />
+						<f:selectItem itemValue="X" itemLabel="Objet de taille grande (L)" />
+						<f:selectItem itemValue="XL"
+							itemLabel="Objet de taille très grande (XL)" />
+					</b:selectOneMenu>
+					<b:inputText placeholder="Poids (kg)"
+						value="#{reservationController.colis.poids}" label="Poids" />
+
+					<b:inputTextarea placeholder="Description"
+						value="#{reservationController.colis.description}"
+						label="Description" />
+
+					<h:commandLink action="#{reservationController.reserver()}"
+						value="Réserver">
+
+						<f:param name="livraisonId2"
+							value="#{reservationController.livraison.id}" />
+							
+							<f:param name="reserId" value="#{reser.id}" />
+					</h:commandLink>
+
+
+				</b:column>
+
+				<b:column span="2">
+
+
+				</b:column>
+
+			</b:row>
+
+		</b:container>
+	</b:form>
+	  </div>
+    </section>
+    <div id="footer" >
+			<ui:insert name="footer">
+				<ui:include src="footer.xhtml" />
+			</ui:insert>
+		</div>
+	</div>
+</body>
+</html>

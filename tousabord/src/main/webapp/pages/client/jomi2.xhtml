@@ -1,0 +1,544 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+	<f:event listener="#{utilisateurProfilController.onLoad()}"
+		type="preRenderView"></f:event>
+	<f:event listener="#{livraisonController.init()}" type="preRenderView"></f:event>
+</f:metadata>
+<head>
+<meta charset="utf-8"></meta>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"></meta>
+
+<title>JOLI COLIS</title>
+<meta content="" name="description"></meta>
+<meta content="" name="keywords"></meta>
+
+<!-- Favicons -->
+<link href="assets/img/favicon.png" rel="icon"></link>
+<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"></link>
+
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i"
+	rel="stylesheet"></link>
+<!-- Vendor CSS Files -->
+<link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet"></link>
+<link href="assets/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet"></link>
+<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+	rel="stylesheet"></link>
+<link href="assets/vendor/boxicons/css/boxicons.min.css"
+	rel="stylesheet"></link>
+<link href="assets/vendor/glightbox/css/glightbox.min.css"
+	rel="stylesheet"></link>
+<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"></link>
+
+
+<link href="../client/assets/css/style.css" rel="stylesheet"></link>
+
+
+</head>
+
+<h:body>
+
+	<!-- ======= Top Bar ======= -->
+	<section id="topbar"
+		class="d-flex align-items-center fixed-top topbar-transparent">
+	<div
+		class="container-fluid container-xl d-flex align-items-center justify-content-center justify-content-lg-start">
+		<i class="bi bi-phone d-flex align-items-center"><span>01
+				45 35 46 57</span></i> <i
+			class="bi bi-clock ms-4 d-none d-lg-flex align-items-center"><span>OUVERT
+				du Lundi au Vendredi de 10H à 22H</span></i>
+	</div>
+	</section>
+
+	<!-- ======= Header ======= -->
+	<header id="header"
+		class="fixed-top d-flex align-items-center header-transparent">
+	<div
+		class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+		<div class="logo me-auto">
+			<h1>
+				<a href="../client/jomi2.xhtml">JOLI COLIS</a>
+			</h1>
+			<!-- Uncomment below if you prefer to use an image logo -->
+			<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+		</div>
+
+		<nav id="navbar" class="navbar order-last order-lg-0"> <h:form>
+			<ul>
+				<li><a class="nav-link scrollto active"
+					href="../client/jomi2.xhtml">Accueil</a></li>
+				<li><a class="nav-link scrollto" href="#about">A propos</a></li>
+
+				<li class="dropdown"><a href="./liste-livraisons4.xhtml"><span>Transport de colis
+							</span> </a>
+					</li>
+
+
+
+				<li><h:link class="btn btn-rounded" outcome="connexion.xhtml"
+						data-toggle="tooltip" data-placement="top" title="Connexion"
+						rendered="#{!connexionController2.estConnecte()}">
+						Connexion
+					</h:link></li>
+
+				<li><h:link class="btn btn-rounded" outcome="inscription.xhtml"
+						rendered="#{!connexionController2.estConnecte()}">Inscription</h:link></li>
+
+
+				<li><h:link class="btn btn-rounded"
+						outcome="/pages/client/profil-utilisateur.xhtml"
+						rendered="#{connexionController2.estUtilisateur()==true and connexionController2.estConnecte()}">Mon profil</h:link>
+
+					<h:link class="btn btn-rounded"
+						outcome="/pages/client/profil-admin.xhtml"
+						rendered="#{connexionController2.estUtilisateur()==false and connexionController2.estConnecte()}">Mon profil Admin</h:link>
+
+
+				</li>
+
+
+
+				<li class="scroll"><h:commandLink
+						action="#{connexionController2.seDeconnecter()}"
+						data-toggle="tooltip" data-placement="top" title="Déconnexion"
+						rendered="#{connexionController2.estConnecte()}">Déconnexion</h:commandLink></li>
+
+
+				<li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+			</ul>
+		</h:form> <i class="bi bi-list mobile-nav-toggle"></i> </nav>
+		<!-- .navbar -->
+
+
+
+	</div>
+	</header>
+	<!-- End Header -->
+
+	<!-- ======= Hero Section ======= -->
+	<section id="hero">
+	<div class="hero-container">
+		<div id="heroCarousel" data-bs-interval="5000"
+			class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+			<ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+			<div class="carousel-inner" role="listbox">
+
+				<!-- Slide 1 -->
+				<div class="carousel-item active"
+					style="background-image: url(assets/img/slide/slide-4.jpg);">
+					<div class="carousel-container">
+						<div class="carousel-content">
+							<h2 class="animate__animated animate__fadeInDown">
+								<span>JOLI</span> COLIS
+							</h2>
+							<p class="animate__animated animate__fadeInUp">Un transport
+								de colis entre particuliers avec un suvi de son acheminement</p>
+
+						</div>
+					</div>
+				</div>
+
+				<!-- Slide 2 -->
+				<div class="carousel-item"
+					style="background-image: url(assets/img/slide/slide.jpg);">
+					<div class="carousel-container">
+						<div class="carousel-content">
+							<h2 class="animate__animated animate__fadeInDown">Une
+								réception en toute sécurité</h2>
+							<p class="animate__animated animate__fadeInUp">Un savoir-faire
+								qui se développe et s'affine avec le temps</p>
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+
+			<a class="carousel-control-prev" href="#heroCarousel" role="button"
+				data-bs-slide="prev"> <span
+				class="carousel-control-prev-icon bi bi-chevron-left"
+				aria-hidden="true"></span>
+			</a> <a class="carousel-control-next" href="#heroCarousel" role="button"
+				data-bs-slide="next"> <span
+				class="carousel-control-next-icon bi bi-chevron-right"
+				aria-hidden="true"></span>
+			</a>
+
+		</div>
+	</div>
+	</section>
+	<!-- End Hero -->
+
+	<main id="main"> <!-- ======= About Section ======= --> <!-- <section
+		id="about" class="about"> -->
+	<div class="container-fluid">
+
+
+
+<!-- 		<div class="row">
+
+			
+
+		</div> -->
+
+		<div class="row"></div>
+
+	</div>
+	
+	 <!-- ======= Chefs Section ======= --> <section
+		id="chefs" class="chefs">
+
+
+		<div class="row"></div>
+
+
+
+	</section>
+ <section id="gallery" class="gallery"> </section><!-- End Gallery Section -->
+	<!-- ======= Chefs Section ======= --> <section id="chefs"
+		class="chefs">
+
+
+	<div class="container">
+		<div class="container text-center mb-5 mt-5">
+			<h1>Les services</h1>
+		</div>
+
+
+		<div class="container shadow p-5 mb-5">
+			<div class="row">
+				<p:repeat var="liv" value="#{livraisonController.livraisons}">
+
+					<div class="col-12 col-md-3 my-3">
+						<!-- 	<h:link -->
+						<!-- outcome="detail-colis.xhtml?id=#{liv.id}faces-redirect=true"> -->
+						<p:card style="margin-right: 30px; height: 100%"
+							styleClass="shadow">
+							<f:facet name="header">
+								<img src="#{request.contextPath}#{liv.imagePath}" class="ratio"
+									style="object-fit: cover; height: auto;" />
+							</f:facet>
+							<f:facet name="title">
+								<h6 style="font-size: 10px">#{liv.description}</h6>
+							</f:facet>
+							<f:facet name="subtitle">
+								<p>
+									Lieu de départ :
+									<h:outputText value="#{liv.infoDebutService.lieuDeDepart.ville}" />
+								</p>
+								<p>
+									Date de départ :
+									<h:outputText value="#{liv.infoDebutService.dateDeDepart}">
+										<f:convertDateTime locale="fr" type="date" dateStyle="full"
+											pattern="dd/MM/yyyy" />
+									</h:outputText>
+								</p>
+								<p>
+									Heure de départ :
+									<h:outputText value="#{liv.infoDebutService.heureDeDepart}">
+										<f:convertDateTime locale="fr" type="time" pattern="h:mm" />
+									</h:outputText>
+								</p>
+							</f:facet>
+							<f:facet name="footer">
+								<p>
+									Lieu d'arrivée :
+									<h:outputText value="#{liv.infoFinService.lieuDArrivee.ville}" />
+								</p>
+								<p>
+									Date d'arrivée :
+									<h:outputText value="#{liv.infoFinService.dateDArrivee}">
+										<f:convertDateTime locale="fr" type="date" dateStyle="full"
+											pattern="dd/MM/yyyy" />
+									</h:outputText>
+								</p>
+								<p>
+									Heure d'arrivée :
+									<h:outputText value="#{liv.infoFinService.heureDArrivee}">
+										<f:convertDateTime locale="fr" type="time" pattern="h:mm" />
+									</h:outputText>
+								</p>
+
+
+								<p>Prix : #{liv.montant} €</p>
+
+
+
+								<h:link class="btn btn-info " outcome="ajout-colis"
+									value="Réserver">
+									<f:param name="livraisonId2" value="#{liv.id}"></f:param>
+								</h:link>
+
+
+
+							</f:facet>
+						</p:card>
+						<!-- 	</h:link> -->
+					</div>
+
+				</p:repeat>
+			</div>
+		</div>
+		<div class="section-title">
+			<h2>
+				Nos <span>Développeurs</span>
+			</h2>
+			<p>Une équipe dédiée et compétente</p>
+		</div>
+
+		<div class="row">
+
+			<div class="col-lg-4 col-md-6">
+				<div class="member">
+					<div class="pic">
+						<img src="assets/img/chefs/avatar-1.jpg" class="img-fluid" alt=""></img>
+					</div>
+					<div class="member-info">
+						<h4>Walter White</h4>
+						<span>Directeur</span>
+						<div class="social">
+							<a href=""><i class="bi bi-twitter"></i></a> <a href=""><i
+								class="bi bi-facebook"></i></a> <a href=""><i
+								class="bi bi-instagram"></i></a> <a href=""><i
+								class="bi bi-linkedin"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-md-6">
+				<div class="member">
+					<div class="pic">
+						<img src="assets/img/chefs/avatar-2.jpg" class="img-fluid" alt=""></img>
+					</div>
+					<div class="member-info">
+						<h4>Sarah Jhonson</h4>
+						<span>Chef de projet</span>
+						<div class="social">
+							<a href=""><i class="bi bi-twitter"></i></a> <a href=""><i
+								class="bi bi-facebook"></i></a> <a href=""><i
+								class="bi bi-instagram"></i></a> <a href=""><i
+								class="bi bi-linkedin"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-md-6">
+				<div class="member">
+					<div class="pic">
+						<img src="assets/img/chefs/avatar-3.jpg" class="img-fluid" alt=""></img>
+					</div>
+					<div class="member-info">
+						<h4>William Anderson</h4>
+						<span>Tech Lead</span>
+						<div class="social">
+							<a href=""><i class="bi bi-twitter"></i></a> <a href=""><i
+								class="bi bi-facebook"></i></a> <a href=""><i
+								class="bi bi-instagram"></i></a> <a href=""><i
+								class="bi bi-linkedin"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	</section><!-- End Chefs Section --> <!-- ======= Testimonials Section ======= -->
+	<section id="testimonials" class="testimonials">
+	<div class="container position-relative">
+
+		<div class="testimonials-slider swiper" data-aos="fade-up"
+			data-aos-delay="100">
+			<div class="swiper-wrapper">
+
+				<div class="swiper-slide">
+					<div class="testimonial-item">
+						<img src="assets/img/testimonials/testimonials-1.jpg"
+							class="testimonial-img" alt=""></img>
+						<h3>Saul Goodman</h3>
+						<h4>Je livre vos colis dans le secteur de Dax !</h4>
+						<div class="stars">
+							<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+								class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+								class="bi bi-star-fill"></i>
+						</div>
+					</div>
+				</div>
+				<!-- End testimonial item -->
+
+				<div class="swiper-slide">
+					<div class="testimonial-item">
+						<img src="assets/img/testimonials/testimonials-2.jpg"
+							class="testimonial-img" alt=""></img>
+						<h3>Sara Wilsson</h3>
+						<h4>Contactez-moi si vous habitez vers Toulouse !</h4>
+						<div class="stars">
+							<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+								class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+								class="bi bi-star-fill"></i>
+						</div>
+					</div>
+				</div>
+				<!-- End testimonial item -->
+
+				<div class="swiper-slide">
+					<div class="testimonial-item">
+						<img src="assets/img/testimonials/testimonials-3.jpg"
+							class="testimonial-img" alt=""></img>
+						<h3>Jena Karlis</h3>
+						<h4>Je livre vos colis à Brest et ses alentours.</h4>
+						<div class="stars">
+							<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+								class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+								class="bi bi-star-fill"></i>
+						</div>
+					</div>
+				</div>
+				<!-- End testimonial item -->
+
+				<div class="swiper-slide">
+					<div class="testimonial-item">
+						<img src="assets/img/testimonials/testimonials-4.jpg"
+							class="testimonial-img" alt=""></img>
+						<h3>Matt Brandon</h3>
+						<h4>N'hésitez pas à faire appel à mes services si vous habitez Paris ou sa banlieue proche !</h4>
+						<div class="stars">
+							<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+								class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+								class="bi bi-star-fill"></i>
+						</div>
+					</div>
+				</div>
+				<!-- End testimonial item -->
+
+				<div class="swiper-slide">
+					<div class="testimonial-item">
+						<img src="assets/img/testimonials/testimonials-5.jpg"
+							class="testimonial-img" alt=""></img>
+						<h3>John Larson</h3>
+						<h4>Je m'occupe de vos colis du côté de Nantes !</h4>
+						<div class="stars">
+							<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+								class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+								class="bi bi-star-fill"></i>
+						</div>
+					</div>
+				</div>
+				<!-- End testimonial item -->
+
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+
+	</div>
+	</section><!-- End Testimonials Section --> <!-- ======= Contact Section ======= -->
+	<section id="contact" class="contact" style="padding-bottom:3rem;">
+	<div class="container">
+
+		<div class="section-title">
+			<h2>
+				<span>Contactez-</span>nous
+			</h2>
+			<p>Des questions ? Envoyez-nous un mail !</p>
+		</div>
+	</div>
+
+
+
+	<div class="container mt-5">
+
+
+
+		<form action="forms/contact.php" method="post" role="form"
+			class="php-email-form">
+			<div class="row">
+				<div class="col-md-6 form-group">
+					<input type="text" name="name" class="form-control" id="name"
+						placeholder="Votre nom" required="required"></input>
+				</div>
+				<div class="col-md-6 form-group mt-3 mt-md-0">
+					<input type="email" class="form-control" name="email" id="email"
+						placeholder="Votre email" required="required"></input>
+				</div>
+			</div>
+			<div class="form-group mt-3">
+				<input type="text" class="form-control" name="subject" id="subject"
+					placeholder="Objet de votre message" required="required"></input>
+			</div>
+			<div class="form-group mt-3">
+				<textarea class="form-control" name="message" rows="5"
+					placeholder="Message" required="required"></textarea>
+			</div>
+			<div class="my-3">
+				<div class="loading">Loading</div>
+				<div class="error-message"></div>
+				<div class="sent-message">Your message has been sent. Thank
+					you!</div>
+			</div>
+			<div class="text-center">
+				<button type="submit">Envoyer</button>
+			</div>
+		</form>
+
+	</div>
+	</section><!-- End Contact Section --> </main>
+	<!-- End #main -->
+
+	<!-- ======= Footer ======= -->
+	<footer id="footer">
+	<div class="container">
+		<h3>Tous A bord</h3>
+		<p>Spécialiste des services de transports entre particuliers</p>
+		<div class="social-links">
+			<a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> <a
+				href="#" class="facebook"><i class="bx bxl-facebook"></i></a> <a
+				href="#" class="instagram"><i class="bx bxl-instagram"></i></a> <a
+				href="#" class="google-plus"><i class="bx bxl-skype"></i></a> <a
+				href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+		</div>
+		<div class="copyright">
+			&copy; Copyright <strong><span>Tous A bord</span></strong>. All
+			Rights Reserved
+		</div>
+		<div class="credits">
+			<!-- All the links in the footer should remain intact. -->
+			<!-- You can delete the links only if you purchased the pro version. -->
+			<!-- Licensing information: https://bootstrapmade.com/license/ -->
+			<!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/delicious-free-restaurant-bootstrap-theme/ -->
+			Designed by <a href="https://bootstrapmade.com/">Tous A bord</a>
+		</div>
+	</div>
+	</footer>
+	<!-- End Footer -->
+
+	<a href="#"
+		class="back-to-top d-flex align-items-center justify-content-center"><i
+		class="bi bi-arrow-up-short"></i></a>
+
+	<!-- Vendor JS Files -->
+	<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+	<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+	<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+	<script src="assets/vendor/php-email-form/validate.js"></script>
+
+	<!-- Template Main JS File -->
+	<script src="assets/js/main.js"></script>
+
+</h:body>
+
+</html>

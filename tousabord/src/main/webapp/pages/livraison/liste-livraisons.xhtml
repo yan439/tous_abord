@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<f:metadata>
+	<f:event listener="#{livraisonController.init()}" type="preRenderView"></f:event>
+</f:metadata>
+
+<h:head>
+	<h:outputStylesheet library="css" name="styleromuald.css" />
+</h:head>
+<body>
+
+
+	<h2>Liste des livraisons de colis</h2>
+	
+	<b:form>
+		<h:dataTable value="#{livraisonController.livraisons}" border="1"
+			cellpadding="5" cellspacing="5" var="liv" styleClass="livTable"
+			headerClass="livTableHeader"
+			rowClasses="livTableOddRow, livTableEvenRow">
+
+
+			<h:column>
+				<f:facet name="header">Lieu de départ</f:facet>
+				<h:outputText
+					value="#{liv.infoDebutService.lieuDeDepart.numero}  #{liv.infoDebutService.lieuDeDepart.voie},  #{liv.infoDebutService.lieuDeDepart.ville} #{liv.infoDebutService.lieuDeDepart.codePostal}">
+				</h:outputText>
+
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">Lieu d'arrivée</f:facet>
+				<h:outputText
+					value="#{liv.infoFinService.lieuDArrivee.numero}  #{liv.infoFinService.lieuDArrivee.voie},  #{liv.infoFinService.lieuDArrivee.ville} #{liv.infoFinService.lieuDArrivee.codePostal}">
+				</h:outputText>
+
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Date de départ</f:facet>
+
+				<h:outputText value="#{liv.infoDebutService.dateDeDepart}">
+					<f:convertDateTime locale="fr" type="date" dateStyle="full"
+						pattern="dd/MM/yyyy" />
+				</h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Heure de départ</f:facet>
+
+				<h:outputText value="#{liv.infoDebutService.heureDeDepart}">
+					<f:convertDateTime locale="fr" type="time" pattern="h:mm" />
+				</h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Date d'arrivée</f:facet>
+
+				<h:outputText value="#{liv.infoFinService.dateDArrivee}">
+					<f:convertDateTime locale="fr" type="date" dateStyle="full"
+						pattern="dd/MM/yyyy" />
+				</h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Heure de départ</f:facet>
+
+				<h:outputText value="#{liv.infoFinService.heureDArrivee}">
+					<f:convertDateTime locale="fr" type="time" pattern="h:mm" />
+				</h:outputText>
+			</h:column>
+
+
+
+<!-- 			<h:column> -->
+<!-- 				<f:facet name="header">Etat du service</f:facet> -->
+
+<!-- 				<h:outputText value="#{liv.etatService}" /> -->
+
+<!-- 			</h:column> -->
+
+
+			<h:column>
+				<f:facet name="header">Montant</f:facet>
+
+				<h:outputText value="#{liv.montant}" />
+
+			</h:column>
+
+		
+			<h:column>
+				<f:facet name="header">Action </f:facet>
+
+
+				<h:commandLink action="#{livraisonController.showAjouterColis()}"
+					value="Réserver">
+					<f:param name="livraisonId2" value="#{liv.id}" />
+				</h:commandLink>
+			</h:column>
+
+		</h:dataTable>
+	</b:form>
+
+</body>
+</html>

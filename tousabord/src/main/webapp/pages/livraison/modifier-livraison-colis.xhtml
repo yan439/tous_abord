@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"> 
+
+<f:metadata>
+	<f:event listener="#{modifierLivraisonColisController.init()}"
+		type="preRenderView"></f:event>
+</f:metadata>
+
+<h:head></h:head> 
+<body> 
+	<b:form>
+
+		<b:container fluid="true">
+
+			<b:column span="2" offset="2">
+				<h:outputLabel value="" />
+			</b:column>
+
+			<b:row>
+
+				<b:column span="2" offset="2">
+					<h:outputLabel value="Id du colis à modifier" />
+				</b:column>
+
+				<b:column span="2">
+					<h:outputText value="#{modifierLivraisonColisController.colis.id}" />
+				</b:column>
+
+			</b:row>
+			
+			<b:row>
+
+				<b:column span="2" offset="2">
+					<h:outputLabel value="Id de la livraison à modifier" />
+				</b:column>
+
+				<b:column span="2">
+					<h:outputText value="#{modifierLivraisonColisController.livraison.id}" />
+				</b:column>
+
+			</b:row>
+
+			<b:row>
+
+				<b:column span="2" offset="2">
+					<h:outputLabel value="Description" />
+				</b:column>
+
+				<b:column span="2">
+					<b:inputText placeholder="Description"
+						value="#{modifierLivraisonColisController.colis.description}" />
+				</b:column>
+
+
+				<b:column span="2">
+					<h:outputLabel value="Poids" />
+				</b:column>
+
+				<b:column span="2">
+					<b:inputText placeholder="Poids"
+						value="#{modifierLivraisonColisController.colis.poids}" />
+					
+				</b:column>
+ 
+				<b:column span="4">
+					<b:message />
+				</b:column>
+
+			</b:row>
+
+			<b:row>
+				<b:column span="1" offset="2">
+				
+				
+				<b:row>
+				<b:column span="1" offset="2">
+				
+				<h:commandLink
+					action="#{modifierLivraisonColisController.modifierColis()}"
+					value="Modifier" >
+				
+					<f:param name="colisId" value="#{modifierLivraisonColisController.colis.id}"/>
+					<f:param name="livraisonId" value="#{modifierLivraisonColisController.livraison.id}"/>
+					
+				</h:commandLink>
+				
+<!-- 					<b:commandButton value="Modifier" -->
+<!-- 						action="#{modifierLivraisonColisController.modifierColis()}" look="primary"/> -->
+						
+<!-- 							<f:param name="colisId" value="#{modifierLivraisonColisController.colis.id}"/> -->
+							
+				</b:column>
+			</b:row>
+				
+<!-- 				<h:commandLink -->
+<!-- 					action="#{ajouterColisController.ajoutColis()}" -->
+<!-- 					value="Ajout" > -->
+				
+<!-- 					<f:param name="livraisonId2" value="#{ajouterColisController.livraison.id}"/> -->
+<!-- 				</h:commandLink> -->
+				
+					
+				</b:column>
+			</b:row>
+		</b:container>
+
+	</b:form>
+</body> 
+</html>

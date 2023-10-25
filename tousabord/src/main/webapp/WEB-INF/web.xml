@@ -1,0 +1,78 @@
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+
+	<display-name>TousAbord</display-name>
+
+	<!-- Lancement auto de la page index -->
+	<welcome-file-list>
+		<welcome-file>/pages/index.xhtml</welcome-file>
+	</welcome-file-list>
+
+	<!-- Changer cette valeur Ã  "Production" lors du dÃ©ploiement final de l'application -->
+	<context-param>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Development</param-value>
+	</context-param>
+
+	
+
+	
+
+	<!-- The BootsFaces_THEME context-param controls the loading of the Themes -->
+	<!-- The default is Bootstrap, the valid values are a Bootswach Theme name 
+		(lowercase) or "custom". If custom is chosen, you will have to provide your 
+		custom CSS in the "other" folder. -->
+	<context-param>
+		<param-name>BootsFaces_THEME</param-name>
+		<param-value>spacelab</param-value>
+	</context-param>
+
+	<!-- The BootsFaces_USETHEME context-param controls the loading of the bootstrap-theme.css -->
+	<!-- The default is false, when set to true the bootstrap-theme.css will 
+		be loaded -->
+	<context-param>
+		<param-name>BootsFaces_USETHEME</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>net.bootsfaces.get_jquery_from_cdn</param-name>
+		<param-value>false</param-value>
+	</context-param>
+
+	<!-- DÃ©claration du contrÃ´leur central de JSF : la FacesServlet -->
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Mapping : association des requÃªtes dont le fichier porte l'extension 
+		.xhtml Ã  la FacesServlet -->
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+
+	
+	<!-- DÃ©claration de l'application paypal et de son token pour identification -->
+	
+<!-- 	<context-param>
+		<param-name>authtoken</param-name>
+		<param-value>dr5oN0AldAgoMY1Sfq6jFliOEc4ed9nYvA_TpyEBLn5wIgnfT00Wu5FLVI8</param-value>
+	
+	</context-param> -->
+	
+	<context-param>
+		<param-name>posturl</param-name>
+		<param-value>https://www.sandox.paypal.com/cgi-bin/web/webscr</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>business</param-name>
+		<param-value>mail@yahoo.com</param-value>
+	</context-param>
+
+
+</web-app>

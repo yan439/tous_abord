@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<h:head>
+
+
+</h:head>
+<div id="page">
+<body class="bodyformulairePaiement">
+	<ui:composition template="/WEB-INF/template/layout.xhtml">
+
+		<f:metadata>
+			<f:viewParam name="id" />
+			<!-- <f:event listener="" type="preRenderView" /> -->
+		</f:metadata>
+
+		<ui:define name="css">
+			<link rel="stylesheet" href="../resources/css/cartPage.css" />
+		</ui:define>
+		<ui:define name="content" style="padding-top:12rem;">
+
+			<div class="ui-fuild row text-center  my-5">
+				<h1>Récapitulatif de vos réservations</h1>
+			</div>
+
+			<div class="container my-5 p-5 shadow rounded" id="containerMain">
+				<div class="ms-3 mb-5">
+					Date:
+					<p:outputLabel value="">
+						<f:convertDateTime type="date" dateStyle="full" />
+					</p:outputLabel>
+				</div>
+
+				<div class="m-3 text-center">
+					<p:dataTable var="orderLine" value="" lazy="false">
+
+						<p:column headerText="Date de la prestation">
+							<p:outputLabel value="#{paiementController.transaction.dateTransaction}" />
+						</p:column>
+
+						<p:column headerText="Contributeur">
+
+							<p:outputLabel value="#{paiementController.contributeur.infoPersonnelle.prenom} #{paiementController.contributeur.infoPersonnelle.nom.toUpperCase()}" />
+
+						</p:column>
+
+<!-- 						<p:column headerText="Service"> -->
+<!-- 							<p:outputLabel value="#{paiementController.reservation.service.nomduService}" /> -->
+<!-- 						</p:column> -->
+
+<!-- 						<c:if test="#{paiementController.reservation.service.nomduService == 'TRANSPORT_COLIS' }" var="variable"> -->
+<!--     					C'est vrai ! -->
+
+
+<!-- 						<p:column headerText="Taille"> -->
+<!-- 							<p:outputLabel value="#{paiementController.livraison.colis.taille}" /> -->
+<!-- 						</p:column> -->
+
+<!-- 						<p:column headerText="Poids"> -->
+<!-- 							<p:outputLabel value="#{paiementController.livraison.colis.poids}" /> -->
+<!-- 						</p:column> -->
+<!-- 						</c:if> -->
+
+
+						<!--<p:column headerText="Aperçu">
+							<p:graphicImage value=""/>
+						</p:column> -->
+						<p:column headerText="Lieu de départ">
+							<p:outputLabel value="#{paiementController.reservation.service.infoDebutService.lieuDeDepart}" />
+						</p:column>
+						<p:column headerText="Date de départ">
+							<p:outputLabel value="#{paiementController.reservation.service.infoDebutService.dateDeDepart}" />
+						</p:column>
+						<p:column headerText="Lieu d'arrivée">
+							<p:outputLabel value="#{paiementController.reservation.service.infoFinService.lieuDArrivee}" />
+						</p:column>	
+						<p:column headerText="Date d'arrivée">
+							<p:outputLabel value="#{paiementController.reservation.service.infoFinService.dateDArrivee}" />
+						</p:column>
+						
+						<p:column headerText="Prix">
+							<h:outputLabel value="#{paiementController.reservation.service.montant}" />
+
+						€
+					</p:column>
+
+
+
+					</p:dataTable>
+				</div>
+
+				<div class="row">
+					<div class="col-12 offset-8 col-md-2 my-auto">Montant total:
+						#{orderSummaryBean.order.totalPrice} €</div>
+					<div class="col-12 col-md-1">
+						<h:form>
+							<p:linkButton icon="fa-regular fa-file-pdf" value="Facture"
+								styleClass="ui-button-secondary" action="#">
+
+							</p:linkButton>
+
+							<h:commandButton action="#{paiementController.payerReservation()}" value="Continuer" />
+
+							
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</body>
+</div>
+</html>

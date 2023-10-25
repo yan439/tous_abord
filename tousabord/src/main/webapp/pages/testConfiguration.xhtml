@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<head>
+<link href="../resources/css/testConfiguration.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="wrapper">
+		<h1>Static Layout Example</h1>
+		<div class="div1">NAV</div>
+		<div class="div2">
+			<ui:insert name="template">SECTION
+				<ui:include src="../WEB-INF/template/configurationSite/templateConfiguration.xhtml" />
+			</ui:insert>
+		</div>
+	</div>
+</body>
+</html>

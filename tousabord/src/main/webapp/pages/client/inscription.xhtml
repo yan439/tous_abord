@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"> 
+
+<h:head>
+	<meta charset="utf-8"></meta>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"></meta>
+
+  <title>JOLI Colis</title>
+  <meta content="" name="description"></meta>
+  <meta content="" name="keywords"></meta>
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon"></link>
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"></link>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i" rel="stylesheet">
+</link>
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet"></link>
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"></link>
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"></link>
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"></link>
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"></link>
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet"></link>
+</h:head> 
+ 
+<h:body> 
+	<div id="page">
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="header.xhtml" />
+			</ui:insert>
+		</div>
+
+    <section class="inner-page" style="
+    margin-top:12rem;
+	margin-bottom: 10rem;
+	border: 2px solid gray;
+	align-content: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 38rem;
+	margin-left: 35rem;
+	padding: 1rem 0rem;
+	border-radius: 20px;" >
+      <div class="container place"  >
+      
+     
+	<div class="limiter">
+		<div class="container-login100"
+			style="background-image: url('../resources/images/connexion/road.jpg');">
+			<div class="wrap-login100">
+				<h:form class="login100-form validate-form">
+					<span class="login100-form-logo"> <img class="logoVoiture"
+						src="../resources/images/logo-site.png" alt="" />
+					</span>
+
+					<span class="login100-form-title p-b-34 p-t-27">Création de
+						compte</span>
+
+					<div class="wrap-input100 validate-input"
+						data-validate="Entrez votre nom">
+						<h:inputText class="input100" name="prenom" a:placeholder="Nom"
+							value="#{creationCompteController.utilisateur.infoPersonnelle.nom}" />
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input"
+						data-validate="Entrez votre prénom">
+						<h:inputText class="input100" name="prenom" a:placeholder="Prénom"
+							value="#{creationCompteController.utilisateur.infoPersonnelle.prenom}" />
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input"
+						data-validate="Entrez votre email">
+						<h:inputText class="input100" name="email" a:placeholder="Email"
+							value="#{creationCompteController.email}"
+							required="true" requiredMessage="Champs requis" />
+						<span class="focus-input100" data-placeholder="@"></span>
+					</div>
+
+
+					<div class="wrap-input100 validate-input" data-validate="Entrez votre mot de passe">
+						<h:inputSecret class="input100" name="mot de passe" a:placeholder="Mot de passe"
+							value="#{creationCompteController.motDePasse}"
+							required="true" requiredMessage="Champs requis" />
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+
+						
+						<h:commandButton class="login100-form-btn"
+							action="#{creationCompteController.creerCompte()}"
+							value="Créer le compte" />
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div id="dropDownSelect1"></div>
+      
+
+      </div>
+    </section>
+
+		<div id="footer" >
+			<ui:insert name="footer">
+				<ui:include src="footer.xhtml" />
+			</ui:insert>
+		</div>
+	</div>
+	
+</h:body>
+
+</html>

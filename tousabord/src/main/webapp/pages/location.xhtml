@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+	
+<h:head></h:head> 
+<body> 
+	<h:form>
+		<h:dataTable  rows="10"
+			value="#{locationController.locations}" var="customer" headerClass="text-center"
+			footerClass="text-center">
+			<f:facet name="header">
+				<h:outputText value="#{i18n['customers']}" />
+			</f:facet>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{i18n['first-name']}" />
+				</f:facet>
+				<h:outputText value="#{customer.firstName}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{i18n['last-name']}" />
+				</f:facet>
+				<h:outputText value="#{customer.lastName}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{i18n['date-of-birth']}" />
+				</f:facet>
+				<h:outputText value="#{customer.dateOfBirth}">
+					<f:convertDateTime pattern="MMM dd, yyyy" />
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{i18n['country']}" />
+				</f:facet>
+				<h:outputText value="#{customer.country.countryName}"/>
+			</h:column>
+			<f:facet name="footer">
+				<h:outputText value="#{i18n['footer']}" />
+			</f:facet>
+		</h:dataTable>
+	</h:form>
+</body> 
+</html>
